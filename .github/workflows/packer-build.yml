@@ -137,7 +137,7 @@ jobs:
             -var "image_version=${{ inputs.image_version }}" \
             -var "replication_regions=[\"eastus\"]" \
             "${EXTRA_VARS[@]}" \
-            "packer"
+            "$TEMPLATE_FILE"
 
       - name: Post-deployment Security Checks
         shell: bash
