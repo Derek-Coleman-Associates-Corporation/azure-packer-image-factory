@@ -143,6 +143,18 @@ jobs:
           echo "Security updates verified at $(date)" > evidence/scans/updates-installed.txt
           echo "No pending reboots detected" > evidence/scans/pending-reboot-state.txt
 
+      - name: Cleanup Stranded Packer VMs
+        if: always()
+        shell: bash
+        run: |
+          echo "Scanning for and deleting orphaned Packer Resource Groups..."
+          # Packer typically names the temp RG 'pkr-Resource-Group-*'
+          STRANDED_RGS=$(az group list --query "[?starts_with(name, 'pkr-Resource-Group-')].name" -o tsv)
+          for rg in $STRANDED_RGS; do
+            echo "Deleting stranded Resource Group: $rg"
+            az group delete --name "$rg" --yes --no-wait || echo "Failed to delete $rg"
+          done
+
       - name: Upload Artifacts
         uses: actions/upload-artifact@v4
         with:
