@@ -1,0 +1,12 @@
+profile_id: ubuntu-server-24.04
+os_family: linux
+os_line: ubuntu-server
+source_image_urn: Canonical:ubuntu-24_04-lts:server:latest
+security_type: TrustedLaunchSupported
+gallery:
+  image_definition: imgdef-ubuntu-server-2404-gen2
+  publisher: DerekColeman
+  offer: ubuntu-server
+  sku: 24_04-lts-gen2
+test:
+  vm_size: Standard_D2ads_v6
