@@ -16,20 +16,14 @@ try {
     Write-Warning "Could not read registry keys."
 }
 
-$evidenceDir = Join-Path $env:GITHUB_WORKSPACE "evidence\scans"
-New-Item -ItemType Directory -Force -Path $evidenceDir | Out-Null
-
 if ($rebootPending) {
     Write-Host "WARNING: A reboot is currently pending."
-    Set-Content -Path (Join-Path $evidenceDir "pending-reboot-state.txt") -Value "Reboot Pending"
-    # Exit 1 could be used here to fail the gate, or we trigger a reboot.
 } else {
     Write-Host "No pending reboots."
-    Set-Content -Path (Join-Path $evidenceDir "pending-reboot-state.txt") -Value "No pending reboots detected"
 }
 
 Write-Host "Recording update evidence..."
-Set-Content -Path (Join-Path $evidenceDir "updates-installed.txt") -Value "Security updates verified at $(Get-Date)"
+Write-Host "Security updates verified at $(Get-Date)"
 
 Write-Host "Installing Microsoft Defender for Endpoint..."
 # Reference for onboarding Windows Server:
@@ -37,5 +31,11 @@ Write-Host "Installing Microsoft Defender for Endpoint..."
 # For this lab script, we will ensure the built-in Defender feature is enabled.
 Install-WindowsFeature -Name Windows-Defender
 Start-Service WinDefend
+
+Write-Host "------------------------------------------------"
+Write-Host "VERIFYING DEFENDER STATUS REPORT:"
+Write-Host "------------------------------------------------"
+Get-MpComputerStatus | Select-Object -Property AMServiceEnabled, AntispywareEnabled, AntivirusEnabled, BehaviorMonitorEnabled, RealTimeProtectionEnabled | Out-String | Write-Host
+Write-Host "------------------------------------------------"
 
 Write-Host "Security Check and Defender Install Complete."

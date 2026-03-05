@@ -69,9 +69,14 @@ build {
   sources = ["source.azure-arm.image"]
 
   provisioner "powershell" {
-    elevated_user     = "azureuser"
-    elevated_password = var.winrm_password
+    scripts = [
+      "${path.root}/../../scripts/security-update-check-windows.ps1"
+    ]
+  }
+
+  provisioner "powershell" {
     inline = [
+      "while ((Get-Service RdAgent).Status -ne 'Running') { Start-Sleep -s 5 }",
       "Write-Output 'Running sysprep and baseline...'",
       "& $env:SystemRoot\\System32\\Sysprep\\Sysprep.exe /oobe /generalize /quiet /quit"
     ]

@@ -26,9 +26,15 @@ echo "No pending reboots detected" > "$GITHUB_WORKSPACE/evidence/scans/pending-r
 echo "Installing Microsoft Defender for Endpoint..."
 curl -o microsoft.list https://packages.microsoft.com/config/ubuntu/24.04/prod.list
 sudo mv ./microsoft.list /etc/apt/sources.list.d/microsoft-prod.list
-sudo apt-get install gpg
+sudo apt-get install -y gpg
 curl -sSl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/microsoft.gpg > /dev/null
 sudo apt-get update
 sudo apt-get install -y mdatp
+
+echo "------------------------------------------------"
+echo "VERIFYING DEFENDER STATUS REPORT (mdatp health):"
+echo "------------------------------------------------"
+mdatp health || echo "WARNING: mdatp health check failed"
+echo "------------------------------------------------"
 
 echo "Security Check and Defender Install Complete."

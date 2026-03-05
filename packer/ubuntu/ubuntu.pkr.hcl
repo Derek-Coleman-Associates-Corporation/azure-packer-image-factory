@@ -61,9 +61,17 @@ build {
 
   provisioner "shell" {
     inline = [
-      "echo 'Running baseline and setup...'",
-      "sudo apt-get update",
-      "sudo apt-get upgrade -y"
+      "echo 'Running baseline and setup...'"
+    ]
+    scripts = [
+      "${path.root}/../../scripts/security-update-check-linux.sh"
+    ]
+  }
+
+  provisioner "shell" {
+    execute_command = "chmod +x {{ .Path }}; {{ .Vars }} sudo -E sh '{{ .Path }}'"
+    inline = [
+      "/usr/sbin/waagent -force -deprovision+user && export HISTSIZE=0 && sync"
     ]
   }
 
