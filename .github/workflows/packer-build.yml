@@ -103,24 +103,6 @@ jobs:
 
           packer init "packer"
           
-          packer validate \
-            -var "profile_id=${{ steps.profile.outputs.profile_id }}" \
-            -var "location=eastus" \
-            -var "build_resource_group_name=RG-PACKER-IMAGE-FACTORY-EASTUS" \
-            -var "vm_size=${{ steps.profile.outputs.vm_size }}" \
-            -var "managed_image_name=${{ steps.profile.outputs.profile_id }}-${{ github.run_id }}" \
-            -var "source_image_publisher=${{ steps.profile.outputs.source_pub }}" \
-            -var "source_image_offer=${{ steps.profile.outputs.source_offer }}" \
-            -var "source_image_sku=${{ steps.profile.outputs.source_sku }}" \
-            -var "source_image_version=${{ steps.profile.outputs.source_ver }}" \
-            -var "gallery_resource_group=RG-PACKER-IMAGE-FACTORY-EASTUS" \
-            -var "gallery_name=acgpackerfactoryeastus" \
-            -var "image_definition=${{ steps.profile.outputs.image_definition }}" \
-            -var "image_version=${{ inputs.image_version }}" \
-            -var "replication_regions=[\"eastus\"]" \
-            "${EXTRA_VARS[@]}" \
-            "$TEMPLATE_FILE"
-
           packer build \
             -var "profile_id=${{ steps.profile.outputs.profile_id }}" \
             -var "location=eastus" \
