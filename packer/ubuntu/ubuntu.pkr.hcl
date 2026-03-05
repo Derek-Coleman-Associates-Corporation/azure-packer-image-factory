@@ -63,6 +63,9 @@ build {
     inline = [
       "echo 'Running baseline and setup...'"
     ]
+  }
+
+  provisioner "shell" {
     scripts = [
       "${path.root}/../../scripts/security-update-check-linux.sh"
     ]
