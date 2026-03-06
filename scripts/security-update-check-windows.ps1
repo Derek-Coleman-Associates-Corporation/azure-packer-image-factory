@@ -28,9 +28,9 @@ Write-Host "Security updates verified at $(Get-Date)"
 Write-Host "Installing Microsoft Defender for Endpoint..."
 # Reference for onboarding Windows Server:
 # https://learn.microsoft.com/en-us/defender-endpoint/configure-server-endpoints
-# For this lab script, we will ensure the built-in Defender feature is enabled.
-Install-WindowsFeature -Name Windows-Defender
-Start-Service WinDefend
+# For this lab script, we will ensure the built-in Defender feature is enabled unattended.
+Install-WindowsFeature -Name Windows-Defender -Confirm:$false
+Start-Service WinDefend -Confirm:$false -WarningAction SilentlyContinue
 
 Write-Host "------------------------------------------------"
 Write-Host "VERIFYING DEFENDER STATUS REPORT:"

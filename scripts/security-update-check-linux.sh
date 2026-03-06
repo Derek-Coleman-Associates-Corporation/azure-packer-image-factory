@@ -3,15 +3,19 @@ set -euo pipefail
 
 # This script is run post-deployment to verify security updates and install Defender.
 
-echo "Running Security Update Check for Linux..."
-sudo apt-get update
+export DEBIAN_FRONTEND=noninteractive
+
+echo "Running Security Update Check for Linux (Unattended Mode)..."
+sudo apt-get update -qq
+
+# Override dpkg options to ensure no interactive prompts on package updates
+DPKG_OPTS="-o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
 updates=$(apt list --upgradable 2>/dev/null | grep -i security || true)
 
 if [ -n "$updates" ]; then
-    echo "WARNING: Security updates are pending!"
+    echo "WARNING: Security updates are pending! Applying automatically..."
     echo "$updates"
-    # Depending on strictness, we might exit 1 here, but we will apply them.
-    sudo apt-get upgrade -y
+    sudo apt-get upgrade -y $DPKG_OPTS
 else
     echo "No pending security updates."
 fi
@@ -27,10 +31,10 @@ echo "No pending reboots detected" > "$EVIDENCE_DIR/pending-reboot-state.txt"
 echo "Installing Microsoft Defender for Endpoint..."
 curl -o microsoft.list https://packages.microsoft.com/config/ubuntu/24.04/prod.list
 sudo mv ./microsoft.list /etc/apt/sources.list.d/microsoft-prod.list
-sudo apt-get install -y gpg
+sudo apt-get install -y -qq gpg
 curl -sSl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | sudo tee /usr/share/keyrings/microsoft-prod.gpg > /dev/null
-sudo apt-get update
-sudo apt-get install -y mdatp
+sudo apt-get update -qq
+sudo apt-get install -y -qq $DPKG_OPTS mdatp
 
 echo "------------------------------------------------"
 echo "VERIFYING DEFENDER STATUS REPORT (mdatp health):"

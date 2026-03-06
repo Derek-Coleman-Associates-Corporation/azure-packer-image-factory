@@ -1,0 +1,692 @@
+Build and Publish Packer Image	Set up job	﻿2026-03-05T15:25:07.9816493Z Current runner version: '2.332.0'
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9841866Z ##[group]Runner Image Provisioner
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9842866Z Hosted Compute Agent
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9843465Z Version: 20260213.493
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9844044Z Commit: 5c115507f6dd24b8de37d8bbe0bb4509d0cc0fa3
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9844863Z Build Date: 2026-02-13T00:28:41Z
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9845532Z Worker ID: {84ec97bd-116d-4988-b80a-faedde4cfa9b}
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9846221Z Azure Region: northcentralus
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9846918Z ##[endgroup]
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9848614Z ##[group]Operating System
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9849279Z Ubuntu
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9849895Z 24.04.3
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9850387Z LTS
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9850905Z ##[endgroup]
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9851448Z ##[group]Runner Image
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9852013Z Image: ubuntu-24.04
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9852601Z Version: 20260302.42.1
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9853694Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260302.42/images/ubuntu/Ubuntu2404-Readme.md
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9855441Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260302.42
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9856389Z ##[endgroup]
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9857447Z ##[group]GITHUB_TOKEN Permissions
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9859675Z Contents: read
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9860247Z Metadata: read
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9860916Z ##[endgroup]
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9862986Z Secret source: Actions
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:07.9864003Z Prepare workflow directory
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:08.0304420Z Prepare all required actions
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:08.0359423Z Getting action download info
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:08.4944851Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:08.6491374Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:08.9537074Z Download action repository 'hashicorp/setup-packer@v3' (SHA:1aa358be5cf73883762b302a3a03abd66e75b232)
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:09.3270311Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+Build and Publish Packer Image	Set up job	2026-03-05T15:25:09.5704072Z Complete job name: Build and Publish Packer Image
+Build and Publish Packer Image	Run actions/checkout@v4	﻿2026-03-05T15:25:09.6574929Z ##[group]Run actions/checkout@v4
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6576276Z with:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6577234Z   repository: dereksonthejob/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6578930Z   token: ***
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6579669Z   ssh-strict: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6580430Z   ssh-user: git
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6581200Z   persist-credentials: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6582087Z   clean: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6582880Z   sparse-checkout-cone-mode: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6583844Z   fetch-depth: 1
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6584628Z   fetch-tags: false
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6585418Z   show-progress: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6586262Z   lfs: false
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6586972Z   submodules: false
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6587783Z   set-safe-directory: true
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.6589163Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7717912Z Syncing repository: dereksonthejob/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7721283Z ##[group]Getting Git version info
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7723077Z Working directory is '/home/runner/work/azure-packer-image-factory/azure-packer-image-factory'
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7725491Z [command]/usr/bin/git version
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7773698Z git version 2.53.0
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7800739Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7815851Z Temporarily overriding HOME='/home/runner/work/_temp/1171bc89-05a9-4289-842f-f332006f82df' before making global git config changes
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7818778Z Adding repository directory to the temporary git global config as a safe directory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7830081Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/azure-packer-image-factory/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7870138Z Deleting the contents of '/home/runner/work/azure-packer-image-factory/azure-packer-image-factory'
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7873481Z ##[group]Initializing the repository
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7878255Z [command]/usr/bin/git init /home/runner/work/azure-packer-image-factory/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7971665Z hint: Using 'master' as the name for the initial branch. This default branch name
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7973736Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7976387Z hint: to use in all of your new repositories, which will suppress this warning,
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7977921Z hint: call:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7978813Z hint:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7979774Z hint: 	git config --global init.defaultBranch <name>
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7981676Z hint:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7982816Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7985036Z hint: 'development'. The just-created branch can be renamed via this command:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7987184Z hint:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7987923Z hint: 	git branch -m <name>
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7989088Z hint:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7990246Z hint: Disable this message with "git config set advice.defaultBranchName false"
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7992914Z Initialized empty Git repository in /home/runner/work/azure-packer-image-factory/azure-packer-image-factory/.git/
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.7996774Z [command]/usr/bin/git remote add origin https://github.com/dereksonthejob/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8024667Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8026030Z ##[group]Disabling automatic garbage collection
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8028760Z [command]/usr/bin/git config --local gc.auto 0
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8061571Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8068021Z ##[group]Setting up auth
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8069924Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8104741Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8444226Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8480247Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8719793Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.8764663Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.9010117Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.9046967Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.9049589Z ##[group]Fetching the repository
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:09.9056759Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c832e5fee221b536d5ae720a323a17b6f464be09:refs/remotes/origin/master
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1513200Z From https://github.com/dereksonthejob/azure-packer-image-factory
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1515226Z  * [new ref]         c832e5fee221b536d5ae720a323a17b6f464be09 -> origin/master
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1549432Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1551464Z ##[group]Determining the checkout info
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1553322Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1556951Z [command]/usr/bin/git sparse-checkout disable
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1602831Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1634230Z ##[group]Checking out the ref
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1638962Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1694553Z Reset branch 'master'
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1697068Z branch 'master' set up to track 'origin/master'.
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1705199Z ##[endgroup]
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1748481Z [command]/usr/bin/git log -1 --format=%H
+Build and Publish Packer Image	Run actions/checkout@v4	2026-03-05T15:25:10.1773730Z c832e5fee221b536d5ae720a323a17b6f464be09
+Build and Publish Packer Image	Setup Azure Credentials	﻿2026-03-05T15:25:10.2057799Z ##[group]Run azure/login@v2
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2059272Z with:
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2060186Z   client-id: ***
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2061070Z   tenant-id: ***
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2062009Z   subscription-id: ***
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2062847Z   enable-AzPSSession: false
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2063721Z   environment: azurecloud
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2064604Z   allow-no-subscriptions: false
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2065579Z   audience: api://AzureADTokenExchange
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2066591Z   auth-type: SERVICE_PRINCIPAL
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2067455Z ##[endgroup]
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:10.2475353Z Running Azure CLI Login.
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.2020185Z [command]/usr/bin/az cloud set -n azurecloud
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.4394041Z Done setting cloud: "azurecloud"
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5665602Z Federated token details:
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5666383Z  issuer - https://token.actions.githubusercontent.com
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5667442Z  subject claim - repo:dereksonthejob/azure-packer-image-factory:ref:refs/heads/master
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5668612Z  audience - api://AzureADTokenExchange
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5738659Z  job_workflow_ref - dereksonthejob/azure-packer-image-factory/.github/workflows/packer-build.yml@refs/heads/master
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:23.5740028Z Attempting Azure CLI login by using OIDC...
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:24.8764300Z Subscription is set successfully.
+Build and Publish Packer Image	Setup Azure Credentials	2026-03-05T15:25:24.8765148Z Azure CLI login succeeds by using OIDC.
+Build and Publish Packer Image	Setup Packer	﻿2026-03-05T15:25:24.8865637Z ##[group]Run hashicorp/setup-packer@v3
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:24.8865970Z with:
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:24.8866176Z   version: latest
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:24.8866391Z ##[endgroup]
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:25.0317905Z Installing packer:latest and adding it to GitHub Actions Path
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:25.1023904Z Downloading packer_1.15.0_linux_amd64.zip.
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:25.3048790Z [command]/usr/bin/unzip -o -q /home/runner/work/_temp/packer_1.15.0_linux_amd64.zip
+Build and Publish Packer Image	Setup Packer	2026-03-05T15:25:25.6519023Z packer:latest added to path
+Build and Publish Packer Image	Resolve profile metadata	﻿2026-03-05T15:25:25.9524909Z ##[group]Run set -e
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9525255Z [36;1mset -e[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9525575Z [36;1mPROFILE_FILE="profiles/ubuntu-server/profile.yml"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9525971Z [36;1mif [[ ! -f "$PROFILE_FILE" ]]; then[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9526311Z [36;1m  echo "Profile file missing at $PROFILE_FILE"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9526617Z [36;1m  exit 1[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9526818Z [36;1mfi[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9527006Z [36;1m[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9527315Z [36;1mprofile_id="$(awk -F': ' '/^profile_id:/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9527818Z [36;1mos_family="$(awk -F': ' '/^os_family:/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9528577Z [36;1msource_urn="$(awk -F': ' '/^source_image_urn:/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9529185Z [36;1mimage_def="$(awk -F': ' '$1 ~ /image_definition/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9529724Z [36;1msig_offer="$(awk -F': ' '$1 ~ /offer/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9530214Z [36;1msig_sku="$(awk -F': ' '$1 ~ /sku/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9530675Z [36;1mvm_size="$(awk -F': ' '$1 ~ /vm_size/{print $2; exit}' "$PROFILE_FILE")"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9531031Z [36;1m[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9531370Z [36;1mIFS=':' read -r source_pub source_offer source_sku source_ver <<< "$source_urn"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9531772Z [36;1m[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9532012Z [36;1mecho "os_family=$os_family" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9532381Z [36;1mecho "profile_id=$profile_id" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9532744Z [36;1mecho "source_pub=$source_pub" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9533114Z [36;1mecho "source_offer=$source_offer" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9533485Z [36;1mecho "source_sku=$source_sku" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9533838Z [36;1mecho "source_ver=$source_ver" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9534206Z [36;1mecho "image_definition=$image_def" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9534580Z [36;1mecho "vm_size=$vm_size" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9535239Z [36;1mecho "temp_rg=rg-packer-temp-${profile_id}-22724892857" >> "$GITHUB_OUTPUT"[0m
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9593915Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build and Publish Packer Image	Resolve profile metadata	2026-03-05T15:25:25.9594286Z ##[endgroup]
+Build and Publish Packer Image	Ensure Image Definition Exists	﻿2026-03-05T15:25:25.9906551Z ##[group]Run set -e
+Build and Publish Packer Image	Ensure Image Definition Exists	2026-03-05T15:25:25.9906856Z [36;1mset -e[0m
+Build and Publish Packer Image	Ensure Image Definition Exists	2026-03-05T15:25:25.9907343Z [36;1mecho "We would ensure definition imgdef-ubuntu-server-2404-gen2 exists in acgpackerfactoryeastus here."[0m
+Build and Publish Packer Image	Ensure Image Definition Exists	2026-03-05T15:25:25.9959238Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build and Publish Packer Image	Ensure Image Definition Exists	2026-03-05T15:25:25.9959608Z ##[endgroup]
+Build and Publish Packer Image	Ensure Image Definition Exists	2026-03-05T15:25:26.0034231Z We would ensure definition imgdef-ubuntu-server-2404-gen2 exists in acgpackerfactoryeastus here.
+Build and Publish Packer Image	Packer Init and Build	﻿2026-03-05T15:25:26.0075328Z ##[group]Run set -e
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0075650Z [36;1mset -e[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0075865Z [36;1m[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0076078Z [36;1mOS_FAMILY="linux"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0076332Z [36;1m[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0076575Z [36;1mif [ "$OS_FAMILY" == "windows" ]; then[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0076950Z [36;1m  TEMPLATE_FILE="packer/windows/windows.pkr.hcl"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0077336Z [36;1m  EXTRA_VARS=( "-var" "vm_admin_password=" )[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0077680Z [36;1melif [ "$OS_FAMILY" == "linux" ]; then[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0078027Z [36;1m  TEMPLATE_FILE="packer/ubuntu/ubuntu.pkr.hcl"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0078654Z [36;1m  EXTRA_VARS=()[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0078902Z [36;1melse[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0079158Z [36;1m  echo "Unsupported OS family: $OS_FAMILY"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0079460Z [36;1m  exit 1[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0079666Z [36;1mfi[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0079861Z [36;1m[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0080078Z [36;1mpacker init "$TEMPLATE_FILE"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0080369Z [36;1m[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0080574Z [36;1mpacker build \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0080855Z [36;1m  -var "profile_id=ubuntu-server-24.04" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0081178Z [36;1m  -var "location=eastus" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0081568Z [36;1m  -var "build_resource_group_name=RG-PACKER-IMAGE-FACTORY-EASTUS" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0082002Z [36;1m  -var "vm_size=Standard_D2ads_v6" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0082393Z [36;1m  -var "managed_image_name=ubuntu-server-24.04-22724892857" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0082809Z [36;1m  -var "source_image_publisher=Canonical" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0083166Z [36;1m  -var "source_image_offer=ubuntu-24_04-lts" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0083518Z [36;1m  -var "source_image_sku=server" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0083851Z [36;1m  -var "source_image_version=latest" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0084289Z [36;1m  -var "gallery_resource_group=RG-PACKER-IMAGE-FACTORY-EASTUS" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0084748Z [36;1m  -var "gallery_name=acgpackerfactoryeastus" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0085166Z [36;1m  -var "image_definition=imgdef-ubuntu-server-2404-gen2" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0085546Z [36;1m  -var "image_version=2026.03.01" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0085883Z [36;1m  -var "replication_regions=[\"eastus\"]" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0086196Z [36;1m  "${EXTRA_VARS[@]}" \[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0086464Z [36;1m  "$TEMPLATE_FILE"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0138908Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0139284Z env:
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0139894Z   ARM_CLIENT_ID: ***
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0140296Z   ARM_CLIENT_SECRET: ***
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0140617Z   ARM_TENANT_ID: ***
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0140928Z   ARM_SUBSCRIPTION_ID: ***
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.0141177Z ##[endgroup]
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:26.5979774Z [1;36mInstalled plugin github.com/hashicorp/azure v2.5.2 in "/home/runner/.config/packer/plugins/github.com/hashicorp/azure/packer-plugin-azure_v2.5.2_x5.0_linux_amd64"[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:27.2586271Z [1;32mazure-arm.image: output will be in this color.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:27.2586826Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:27.2593723Z [1;32m==> azure-arm.image: Running builder ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:27.2606131Z [1;32m==> azure-arm.image: Creating Azure Resource Manager (ARM) client ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:28.5204032Z [1;32m==> azure-arm.image: ARM Client successfully created[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.5134643Z [1;32m==> azure-arm.image: Getting source image id for the deployment ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.5140208Z [1;32m==> azure-arm.image:  -> SourceImageName: '/subscriptions/***/providers/Microsoft.Compute/locations/eastus/publishers/Canonical/ArtifactTypes/vmimage/offers/ubuntu-24_04-lts/skus/server/versions/latest'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6507059Z [1;32m==> azure-arm.image: Using existing resource group ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6509211Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6517598Z [1;32m==> azure-arm.image:  -> Location          : 'eastus'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6519378Z [1;32m==> azure-arm.image: Validating deployment template ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6520361Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:29.6521361Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'pkrdpawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:30.8601007Z [1;32m==> azure-arm.image: Deploying deployment template ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:30.8602629Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:25:30.8604829Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'pkrdpawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.0723492Z [1;32m==> azure-arm.image: Getting the VM's IP address ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.0727503Z [1;32m==> azure-arm.image:  -> ResourceGroupName   : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.0729572Z [1;32m==> azure-arm.image:  -> PublicIPAddressName : 'pkripawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.0730711Z [1;32m==> azure-arm.image:  -> NicName             : 'pkrniawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.0732580Z [1;32m==> azure-arm.image:  -> Network Connection  : 'PublicEndpoint'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.3529962Z [1;32m==> azure-arm.image:  -> IP Address          : '13.90.37.133'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.3531252Z [1;32m==> azure-arm.image: Querying the machine's properties ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.3535662Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.3537299Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.6020404Z [1;32m==> azure-arm.image:  -> Managed OS Disk   : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/disks/pkrosawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.6023442Z [1;32m==> azure-arm.image: Querying the machine's additional disks properties ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.6026795Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.6028157Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:13.6757437Z [1;32m==> azure-arm.image: Waiting for SSH to become available...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:19.4137673Z [1;32m==> azure-arm.image: Connected to SSH![0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:19.4168562Z [1;32m==> azure-arm.image: Provisioning with shell script: /tmp/packer-shell3559742973[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:23.0893316Z [1;32m==> azure-arm.image: Running baseline and setup...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:23.6355513Z [1;32m==> azure-arm.image: Hit:1 http://azure.archive.ubuntu.com/ubuntu noble InRelease[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:23.6360105Z [1;32m==> azure-arm.image: Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:23.6365823Z [1;32m==> azure-arm.image: Get:3 http://azure.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:23.6370466Z [1;32m==> azure-arm.image: Get:4 http://azure.archive.ubuntu.com/ubuntu noble-security InRelease [126 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.2533824Z [1;32m==> azure-arm.image: Get:5 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 Packages [15.0 MB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.4253374Z [1;32m==> azure-arm.image: Get:6 http://azure.archive.ubuntu.com/ubuntu noble/universe Translation-en [5982 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5261499Z [1;32m==> azure-arm.image: Get:7 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 Components [3871 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5458961Z [1;32m==> azure-arm.image: Get:8 http://azure.archive.ubuntu.com/ubuntu noble/universe amd64 c-n-f Metadata [301 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5462075Z [1;32m==> azure-arm.image: Get:9 http://azure.archive.ubuntu.com/ubuntu noble/multiverse amd64 Packages [269 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5477042Z [1;32m==> azure-arm.image: Get:10 http://azure.archive.ubuntu.com/ubuntu noble/multiverse Translation-en [118 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5489154Z [1;32m==> azure-arm.image: Get:11 http://azure.archive.ubuntu.com/ubuntu noble/multiverse amd64 Components [35.0 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5713543Z [1;32m==> azure-arm.image: Get:12 http://azure.archive.ubuntu.com/ubuntu noble/multiverse amd64 c-n-f Metadata [8328 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5720608Z [1;32m==> azure-arm.image: Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Packages [1805 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5820657Z [1;32m==> azure-arm.image: Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main Translation-en [332 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5853194Z [1;32m==> azure-arm.image: Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [178 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.5858698Z [1;32m==> azure-arm.image: Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 c-n-f Metadata [16.7 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6192331Z [1;32m==> azure-arm.image: Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Packages [1564 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6273611Z [1;32m==> azure-arm.image: Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe Translation-en [318 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6309357Z [1;32m==> azure-arm.image: Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [386 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6314661Z [1;32m==> azure-arm.image: Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/universe amd64 c-n-f Metadata [32.9 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6320839Z [1;32m==> azure-arm.image: Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Packages [2747 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6466319Z [1;32m==> azure-arm.image: Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted Translation-en [632 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6501187Z [1;32m==> azure-arm.image: Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6507322Z [1;32m==> azure-arm.image: Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Packages [32.1 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6510946Z [1;32m==> azure-arm.image: Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse Translation-en [7044 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6651988Z [1;32m==> azure-arm.image: Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6660117Z [1;32m==> azure-arm.image: Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 c-n-f Metadata [496 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6663709Z [1;32m==> azure-arm.image: Get:28 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Packages [40.4 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6670533Z [1;32m==> azure-arm.image: Get:29 http://azure.archive.ubuntu.com/ubuntu noble-backports/main Translation-en [9208 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6675428Z [1;32m==> azure-arm.image: Get:30 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7296 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6680724Z [1;32m==> azure-arm.image: Get:31 http://azure.archive.ubuntu.com/ubuntu noble-backports/main amd64 c-n-f Metadata [368 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6691035Z [1;32m==> azure-arm.image: Get:32 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Packages [29.5 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6699233Z [1;32m==> azure-arm.image: Get:33 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe Translation-en [17.9 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6704851Z [1;32m==> azure-arm.image: Get:34 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6709716Z [1;32m==> azure-arm.image: Get:35 http://azure.archive.ubuntu.com/ubuntu noble-backports/universe amd64 c-n-f Metadata [1444 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6715285Z [1;32m==> azure-arm.image: Get:36 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6719766Z [1;32m==> azure-arm.image: Get:37 http://azure.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 c-n-f Metadata [116 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6809773Z [1;32m==> azure-arm.image: Get:38 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6819136Z [1;32m==> azure-arm.image: Get:39 http://azure.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 c-n-f Metadata [116 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6820900Z [1;32m==> azure-arm.image: Get:40 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Packages [1504 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6825673Z [1;32m==> azure-arm.image: Get:41 http://azure.archive.ubuntu.com/ubuntu noble-security/main Translation-en [241 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6831063Z [1;32m==> azure-arm.image: Get:42 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6837723Z [1;32m==> azure-arm.image: Get:43 http://azure.archive.ubuntu.com/ubuntu noble-security/main amd64 c-n-f Metadata [10.1 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6842525Z [1;32m==> azure-arm.image: Get:44 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Packages [975 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.6874482Z [1;32m==> azure-arm.image: Get:45 http://azure.archive.ubuntu.com/ubuntu noble-security/universe Translation-en [218 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7123050Z [1;32m==> azure-arm.image: Get:46 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.3 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7131022Z [1;32m==> azure-arm.image: Get:47 http://azure.archive.ubuntu.com/ubuntu noble-security/universe amd64 c-n-f Metadata [20.6 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7160678Z [1;32m==> azure-arm.image: Get:48 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Packages [2599 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7597609Z [1;32m==> azure-arm.image: Get:49 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted Translation-en [600 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7627536Z [1;32m==> azure-arm.image: Get:50 http://azure.archive.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7636733Z [1;32m==> azure-arm.image: Get:51 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Packages [28.8 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7639080Z [1;32m==> azure-arm.image: Get:52 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse Translation-en [6732 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7646205Z [1;32m==> azure-arm.image: Get:53 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [212 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:24.7651103Z [1;32m==> azure-arm.image: Get:54 http://azure.archive.ubuntu.com/ubuntu noble-security/multiverse amd64 c-n-f Metadata [396 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:33.9000677Z [1;32m==> azure-arm.image: Fetched 40.5 MB in 5s (8461 kB/s)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:34.5896521Z [1;32m==> azure-arm.image: Reading package lists...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:34.6258740Z [1;32m==> azure-arm.image: Reading package lists...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:34.8378657Z [1;32m==> azure-arm.image: Building dependency tree...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:34.8383189Z [1;32m==> azure-arm.image: Reading state information...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.0082541Z [1;32m==> azure-arm.image: Calculating upgrade...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1789369Z [1;32m==> azure-arm.image: The following packages have been kept back:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1796205Z [1;32m==> azure-arm.image:   linux-azure linux-cloud-tools-azure linux-headers-azure linux-image-azure[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1799030Z [1;32m==> azure-arm.image:   linux-tools-azure[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1803990Z [1;32m==> azure-arm.image: The following packages will be upgraded:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1812514Z [1;32m==> azure-arm.image:   base-files cloud-init curl gcc-14-base gir1.2-glib-2.0 inetutils-telnet[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1816129Z [1;32m==> azure-arm.image:   initramfs-tools initramfs-tools-bin initramfs-tools-core libc-bin libc6[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1821451Z [1;32m==> azure-arm.image:   libcurl3t64-gnutls libcurl4t64 libexpat1 libgcc-s1 libglib2.0-0t64[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1826996Z [1;32m==> azure-arm.image:   libglib2.0-bin libglib2.0-data libgnutls30t64 libldap-common libldap2[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1832797Z [1;32m==> azure-arm.image:   libnss3 libpng16-16t64 libpython3.12-minimal libpython3.12-stdlib[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1836973Z [1;32m==> azure-arm.image:   libpython3.12t64 libssh-4 libstdc++6 linux-cloud-tools-common[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1842137Z [1;32m==> azure-arm.image:   linux-tools-common locales motd-news-config python-apt-common python3-apt[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1846492Z [1;32m==> azure-arm.image:   python3-software-properties python3.12 python3.12-minimal[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.1941266Z [1;32m==> azure-arm.image:   software-properties-common sosreport systemd-hwe-hwdb telnet[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2062658Z [1;32m==> azure-arm.image: 41 upgraded, 0 newly installed, 0 to remove and 5 not upgraded.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2067748Z [1;32m==> azure-arm.image: Need to get 26.3 MB of archives.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2072206Z [1;32m==> azure-arm.image: After this operation, 313 kB of additional disk space will be used.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2077792Z [1;32m==> azure-arm.image: Get:1 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 motd-news-config all 13ubuntu10.4 [4012 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2082671Z [1;32m==> azure-arm.image: Get:2 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gcc-14-base amd64 14.2.0-4ubuntu2~24.04.1 [51.0 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2094018Z [1;32m==> azure-arm.image: Get:3 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgcc-s1 amd64 14.2.0-4ubuntu2~24.04.1 [78.4 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2103672Z [1;32m==> azure-arm.image: Get:4 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libstdc++6 amd64 14.2.0-4ubuntu2~24.04.1 [792 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2150376Z [1;32m==> azure-arm.image: Get:5 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc6 amd64 2.39-0ubuntu8.7 [3263 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2500430Z [1;32m==> azure-arm.image: Get:6 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 base-files amd64 13ubuntu10.4 [73.3 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2506257Z [1;32m==> azure-arm.image: Get:7 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libc-bin amd64 2.39-0ubuntu8.7 [682 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2541958Z [1;32m==> azure-arm.image: Get:8 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libexpat1 amd64 2.6.1-2ubuntu0.4 [88.2 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2545131Z [1;32m==> azure-arm.image: Get:9 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12t64 amd64 3.12.3-1ubuntu0.11 [2345 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2810579Z [1;32m==> azure-arm.image: Get:10 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12 amd64 3.12.3-1ubuntu0.11 [651 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2847658Z [1;32m==> azure-arm.image: Get:11 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-stdlib amd64 3.12.3-1ubuntu0.11 [2069 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.2958796Z [1;32m==> azure-arm.image: Get:12 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python3.12-minimal amd64 3.12.3-1ubuntu0.11 [2342 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3161795Z [1;32m==> azure-arm.image: Get:13 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpython3.12-minimal amd64 3.12.3-1ubuntu0.11 [837 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3213372Z [1;32m==> azure-arm.image: Get:14 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libgnutls30t64 amd64 3.8.3-1.1ubuntu3.5 [1001 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3270005Z [1;32m==> azure-arm.image: Get:15 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-data all 2.80.0-6ubuntu3.8 [49.6 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3274293Z [1;32m==> azure-arm.image: Get:16 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-bin amd64 2.80.0-6ubuntu3.8 [97.9 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3279542Z [1;32m==> azure-arm.image: Get:17 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 gir1.2-glib-2.0 amd64 2.80.0-6ubuntu3.8 [183 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3290895Z [1;32m==> azure-arm.image: Get:18 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libglib2.0-0t64 amd64 2.80.0-6ubuntu3.8 [1545 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3447286Z [1;32m==> azure-arm.image: Get:19 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 locales all 2.39-0ubuntu8.7 [4225 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3944898Z [1;32m==> azure-arm.image: Get:20 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python-apt-common all 2.7.7ubuntu5.2 [20.6 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3947320Z [1;32m==> azure-arm.image: Get:21 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-apt amd64 2.7.7ubuntu5.2 [169 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3964649Z [1;32m==> azure-arm.image: Get:22 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 systemd-hwe-hwdb all 255.1.7 [3716 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3970380Z [1;32m==> azure-arm.image: Get:23 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 inetutils-telnet amd64 2:2.5-3ubuntu4.1 [100.0 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3973967Z [1;32m==> azure-arm.image: Get:24 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libpng16-16t64 amd64 1.6.43-5ubuntu0.5 [188 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3981001Z [1;32m==> azure-arm.image: Get:25 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 telnet all 0.17+2.5-3ubuntu4.1 [3688 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.3985558Z [1;32m==> azure-arm.image: Get:26 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap2 amd64 2.6.10+dfsg-0ubuntu0.24.04.1 [198 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4003291Z [1;32m==> azure-arm.image: Get:27 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libssh-4 amd64 0.10.6-2ubuntu0.3 [190 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4015324Z [1;32m==> azure-arm.image: Get:28 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 curl amd64 8.5.0-2ubuntu10.7 [227 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4030737Z [1;32m==> azure-arm.image: Get:29 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl4t64 amd64 8.5.0-2ubuntu10.7 [342 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4053065Z [1;32m==> azure-arm.image: Get:30 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 initramfs-tools all 0.142ubuntu25.8 [9076 B][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4057969Z [1;32m==> azure-arm.image: Get:31 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 initramfs-tools-core all 0.142ubuntu25.8 [50.5 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4065753Z [1;32m==> azure-arm.image: Get:32 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 initramfs-tools-bin amd64 0.142ubuntu25.8 [21.6 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4081349Z [1;32m==> azure-arm.image: Get:33 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libcurl3t64-gnutls amd64 8.5.0-2ubuntu10.7 [334 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4085599Z [1;32m==> azure-arm.image: Get:34 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libldap-common all 2.6.10+dfsg-0ubuntu0.24.04.1 [32.9 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4093535Z [1;32m==> azure-arm.image: Get:35 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 libnss3 amd64 2:3.98-1ubuntu0.1 [1445 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4263481Z [1;32m==> azure-arm.image: Get:36 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-cloud-tools-common all 6.8.0-101.101 [649 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4300934Z [1;32m==> azure-arm.image: Get:37 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-tools-common all 6.8.0-101.101 [881 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4352615Z [1;32m==> azure-arm.image: Get:38 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 software-properties-common all 0.99.49.4 [14.4 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4357277Z [1;32m==> azure-arm.image: Get:39 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 python3-software-properties all 0.99.49.4 [30.0 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4362065Z [1;32m==> azure-arm.image: Get:40 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 sosreport amd64 4.10.2-0ubuntu0~24.04.1 [381 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.4374114Z [1;32m==> azure-arm.image: Get:41 http://azure.archive.ubuntu.com/ubuntu noble-updates/main amd64 cloud-init all 25.3-0ubuntu1~24.04.1 [628 kB][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.6308745Z [1;31m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.6314189Z [1;31m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:35.6316195Z [1;31m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:36.2063159Z [1;31m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:36.2067050Z [1;31m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:36.2071986Z [1;31m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:36.2097213Z [1;31m==> azure-arm.image: dpkg-preconfigure: unable to re-open stdin:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:36.2411668Z [1;32m==> azure-arm.image: Fetched 26.3 MB in 0s (103 MB/s)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.3760778Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.3778612Z [1;32m==> azure-arm.image: Preparing to unpack .../motd-news-config_13ubuntu10.4_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.4551040Z [1;32m==> azure-arm.image: Unpacking motd-news-config (13ubuntu10.4) over (13ubuntu10.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.6309065Z [1;32m==> azure-arm.image: Preparing to unpack .../gcc-14-base_14.2.0-4ubuntu2~24.04.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.6570778Z [1;32m==> azure-arm.image: Unpacking gcc-14-base:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.8055829Z [1;32m==> azure-arm.image: Setting up gcc-14-base:amd64 (14.2.0-4ubuntu2~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.9440253Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:37.9453625Z [1;32m==> azure-arm.image: Preparing to unpack .../libgcc-s1_14.2.0-4ubuntu2~24.04.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.0129605Z [1;32m==> azure-arm.image: Unpacking libgcc-s1:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.1583775Z [1;32m==> azure-arm.image: Setting up libgcc-s1:amd64 (14.2.0-4ubuntu2~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.3200414Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.3217633Z [1;32m==> azure-arm.image: Preparing to unpack .../libstdc++6_14.2.0-4ubuntu2~24.04.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.3886408Z [1;32m==> azure-arm.image: Unpacking libstdc++6:amd64 (14.2.0-4ubuntu2~24.04.1) over (14.2.0-4ubuntu2~24.04) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.5562913Z [1;32m==> azure-arm.image: Setting up libstdc++6:amd64 (14.2.0-4ubuntu2~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.7273034Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.7284452Z [1;32m==> azure-arm.image: Preparing to unpack .../libc6_2.39-0ubuntu8.7_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8412138Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8418714Z [1;32m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8421243Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8467699Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8472415Z [1;32m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.8476823Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:38.9757442Z [1;32m==> azure-arm.image: Unpacking libc6:amd64 (2.39-0ubuntu8.7) over (2.39-0ubuntu8.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.0251961Z [1;32m==> azure-arm.image: Setting up libc6:amd64 (2.39-0ubuntu8.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1288598Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1293686Z [1;32m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1297197Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1342023Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1347707Z [1;32m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.1352594Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.9583088Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:40.9594280Z [1;32m==> azure-arm.image: Preparing to unpack .../base-files_13ubuntu10.4_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:41.0642881Z [1;32m==> azure-arm.image: Unpacking base-files (13ubuntu10.4) over (13ubuntu10.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:41.4607770Z [1;32m==> azure-arm.image: Setting up base-files (13ubuntu10.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:41.5498450Z [1;32m==> azure-arm.image: Installing new version of config file /etc/issue ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:41.5627739Z [1;32m==> azure-arm.image: Installing new version of config file /etc/issue.net ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:41.5868940Z [1;32m==> azure-arm.image: Installing new version of config file /etc/lsb-release ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.4023789Z [1;32m==> azure-arm.image: motd-news.service is a disabled or a static unit not running, not starting it.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.5142047Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.5155445Z [1;32m==> azure-arm.image: Preparing to unpack .../libc-bin_2.39-0ubuntu8.7_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.5503156Z [1;32m==> azure-arm.image: Unpacking libc-bin (2.39-0ubuntu8.7) over (2.39-0ubuntu8.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.7716690Z [1;32m==> azure-arm.image: Setting up libc-bin (2.39-0ubuntu8.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:42.9984890Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:43.0002759Z [1;32m==> azure-arm.image: Preparing to unpack .../0-libexpat1_2.6.1-2ubuntu0.4_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:43.0413813Z [1;32m==> azure-arm.image: Unpacking libexpat1:amd64 (2.6.1-2ubuntu0.4) over (2.6.1-2ubuntu0.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:43.1526023Z [1;32m==> azure-arm.image: Preparing to unpack .../1-libpython3.12t64_3.12.3-1ubuntu0.11_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:43.2089009Z [1;32m==> azure-arm.image: Unpacking libpython3.12t64:amd64 (3.12.3-1ubuntu0.11) over (3.12.3-1ubuntu0.10) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:43.9299632Z [1;32m==> azure-arm.image: Preparing to unpack .../2-python3.12_3.12.3-1ubuntu0.11_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:44.0329867Z [1;32m==> azure-arm.image: Unpacking python3.12 (3.12.3-1ubuntu0.11) over (3.12.3-1ubuntu0.10) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:44.2438025Z [1;32m==> azure-arm.image: Preparing to unpack .../3-libpython3.12-stdlib_3.12.3-1ubuntu0.11_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:44.3407200Z [1;32m==> azure-arm.image: Unpacking libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.11) over (3.12.3-1ubuntu0.10) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:45.0942545Z [1;32m==> azure-arm.image: Preparing to unpack .../4-python3.12-minimal_3.12.3-1ubuntu0.11_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:45.1429656Z [1;32m==> azure-arm.image: Unpacking python3.12-minimal (3.12.3-1ubuntu0.11) over (3.12.3-1ubuntu0.10) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:45.4444588Z [1;32m==> azure-arm.image: Preparing to unpack .../5-libpython3.12-minimal_3.12.3-1ubuntu0.11_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:45.5342209Z [1;32m==> azure-arm.image: Unpacking libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.11) over (3.12.3-1ubuntu0.10) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.2131608Z [1;32m==> azure-arm.image: Preparing to unpack .../6-libgnutls30t64_3.8.3-1.1ubuntu3.5_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.2614018Z [1;32m==> azure-arm.image: Unpacking libgnutls30t64:amd64 (3.8.3-1.1ubuntu3.5) over (3.8.3-1.1ubuntu3.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.4447875Z [1;32m==> azure-arm.image: Setting up libgnutls30t64:amd64 (3.8.3-1.1ubuntu3.5) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.6090211Z [1;32m==> azure-arm.image: (Reading database ... 68452 files and directories currently installed.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.6105231Z [1;32m==> azure-arm.image: Preparing to unpack .../00-libglib2.0-data_2.80.0-6ubuntu3.8_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.6400249Z [1;32m==> azure-arm.image: Unpacking libglib2.0-data (2.80.0-6ubuntu3.8) over (2.80.0-6ubuntu3.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.7326106Z [1;32m==> azure-arm.image: Preparing to unpack .../01-libglib2.0-bin_2.80.0-6ubuntu3.8_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.7616809Z [1;32m==> azure-arm.image: Unpacking libglib2.0-bin (2.80.0-6ubuntu3.8) over (2.80.0-6ubuntu3.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.9132532Z [1;32m==> azure-arm.image: Preparing to unpack .../02-gir1.2-glib-2.0_2.80.0-6ubuntu3.8_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:46.9399264Z [1;32m==> azure-arm.image: Unpacking gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.8) over (2.80.0-6ubuntu3.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:47.0742112Z [1;32m==> azure-arm.image: Preparing to unpack .../03-libglib2.0-0t64_2.80.0-6ubuntu3.8_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:47.1101069Z [1;32m==> azure-arm.image: Unpacking libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) over (2.80.0-6ubuntu3.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:47.3647502Z [1;32m==> azure-arm.image: Preparing to unpack .../04-locales_2.39-0ubuntu8.7_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:47.4089021Z [1;32m==> azure-arm.image: Unpacking locales (2.39-0ubuntu8.7) over (2.39-0ubuntu8.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:48.7993444Z [1;32m==> azure-arm.image: Preparing to unpack .../05-python-apt-common_2.7.7ubuntu5.2_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:48.8342081Z [1;32m==> azure-arm.image: Unpacking python-apt-common (2.7.7ubuntu5.2) over (2.7.7ubuntu5.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:48.9568785Z [1;32m==> azure-arm.image: Preparing to unpack .../06-python3-apt_2.7.7ubuntu5.2_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.2069916Z [1;32m==> azure-arm.image: Unpacking python3-apt (2.7.7ubuntu5.2) over (2.7.7ubuntu5.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.3438043Z [1;32m==> azure-arm.image: Preparing to unpack .../07-systemd-hwe-hwdb_255.1.7_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.3697505Z [1;32m==> azure-arm.image: Unpacking systemd-hwe-hwdb (255.1.7) over (255.1.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.4921575Z [1;32m==> azure-arm.image: Preparing to unpack .../08-inetutils-telnet_2%3a2.5-3ubuntu4.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.5793611Z [1;32m==> azure-arm.image: Unpacking inetutils-telnet (2:2.5-3ubuntu4.1) over (2:2.5-3ubuntu4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.7289989Z [1;32m==> azure-arm.image: Preparing to unpack .../09-libpng16-16t64_1.6.43-5ubuntu0.5_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.7788896Z [1;32m==> azure-arm.image: Unpacking libpng16-16t64:amd64 (1.6.43-5ubuntu0.5) over (1.6.43-5ubuntu0.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.9002079Z [1;32m==> azure-arm.image: Preparing to unpack .../10-telnet_0.17+2.5-3ubuntu4.1_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:49.9775580Z [1;32m==> azure-arm.image: Unpacking telnet (0.17+2.5-3ubuntu4.1) over (0.17+2.5-3ubuntu4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.1190144Z [1;32m==> azure-arm.image: Preparing to unpack .../11-libldap2_2.6.10+dfsg-0ubuntu0.24.04.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.1528609Z [1;32m==> azure-arm.image: Unpacking libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) over (2.6.7+dfsg-1~exp1ubuntu8.2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.2882925Z [1;32m==> azure-arm.image: Preparing to unpack .../12-libssh-4_0.10.6-2ubuntu0.3_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.3759416Z [1;32m==> azure-arm.image: Unpacking libssh-4:amd64 (0.10.6-2ubuntu0.3) over (0.10.6-2ubuntu0.2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.4983138Z [1;32m==> azure-arm.image: Preparing to unpack .../13-curl_8.5.0-2ubuntu10.7_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.5292137Z [1;32m==> azure-arm.image: Unpacking curl (8.5.0-2ubuntu10.7) over (8.5.0-2ubuntu10.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.6785576Z [1;32m==> azure-arm.image: Preparing to unpack .../14-libcurl4t64_8.5.0-2ubuntu10.7_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.7126947Z [1;32m==> azure-arm.image: Unpacking libcurl4t64:amd64 (8.5.0-2ubuntu10.7) over (8.5.0-2ubuntu10.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.8549339Z [1;32m==> azure-arm.image: Preparing to unpack .../15-initramfs-tools_0.142ubuntu25.8_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:50.9194277Z [1;32m==> azure-arm.image: Unpacking initramfs-tools (0.142ubuntu25.8) over (0.142ubuntu25.5) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.0888802Z [1;32m==> azure-arm.image: Preparing to unpack .../16-initramfs-tools-core_0.142ubuntu25.8_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.1166787Z [1;32m==> azure-arm.image: Unpacking initramfs-tools-core (0.142ubuntu25.8) over (0.142ubuntu25.5) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.3090206Z [1;32m==> azure-arm.image: Preparing to unpack .../17-initramfs-tools-bin_0.142ubuntu25.8_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.3415877Z [1;32m==> azure-arm.image: Unpacking initramfs-tools-bin (0.142ubuntu25.8) over (0.142ubuntu25.5) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.4586953Z [1;32m==> azure-arm.image: Preparing to unpack .../18-libcurl3t64-gnutls_8.5.0-2ubuntu10.7_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.4866919Z [1;32m==> azure-arm.image: Unpacking libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.7) over (8.5.0-2ubuntu10.6) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.6026245Z [1;32m==> azure-arm.image: Preparing to unpack .../19-libldap-common_2.6.10+dfsg-0ubuntu0.24.04.1_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.6306181Z [1;32m==> azure-arm.image: Unpacking libldap-common (2.6.10+dfsg-0ubuntu0.24.04.1) over (2.6.7+dfsg-1~exp1ubuntu8.2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.7371924Z [1;32m==> azure-arm.image: Preparing to unpack .../20-libnss3_2%3a3.98-1ubuntu0.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.8200594Z [1;32m==> azure-arm.image: Unpacking libnss3:amd64 (2:3.98-1ubuntu0.1) over (2:3.98-1build1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:51.9961674Z [1;32m==> azure-arm.image: Preparing to unpack .../21-linux-cloud-tools-common_6.8.0-101.101_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.0282323Z [1;32m==> azure-arm.image: Unpacking linux-cloud-tools-common (6.8.0-101.101) over (6.8.0-94.96) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.2023132Z [1;32m==> azure-arm.image: Preparing to unpack .../22-linux-tools-common_6.8.0-101.101_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.2295564Z [1;32m==> azure-arm.image: Unpacking linux-tools-common (6.8.0-101.101) over (6.8.0-94.96) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.5063671Z [1;32m==> azure-arm.image: Preparing to unpack .../23-software-properties-common_0.99.49.4_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.6036195Z [1;32m==> azure-arm.image: Unpacking software-properties-common (0.99.49.4) over (0.99.49.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.7487468Z [1;32m==> azure-arm.image: Preparing to unpack .../24-python3-software-properties_0.99.49.4_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.8450442Z [1;32m==> azure-arm.image: Unpacking python3-software-properties (0.99.49.4) over (0.99.49.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:52.9862173Z [1;32m==> azure-arm.image: Preparing to unpack .../25-sosreport_4.10.2-0ubuntu0~24.04.1_amd64.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:53.2011235Z [1;32m==> azure-arm.image: Unpacking sosreport (4.10.2-0ubuntu0~24.04.1) over (4.9.2-0ubuntu0~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:54.2790259Z [1;32m==> azure-arm.image: Preparing to unpack .../26-cloud-init_25.3-0ubuntu1~24.04.1_all.deb ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:54.4722138Z [1;32m==> azure-arm.image: Unpacking cloud-init (25.3-0ubuntu1~24.04.1) over (25.2-0ubuntu1~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:55.4187353Z [1;32m==> azure-arm.image: Setting up libexpat1:amd64 (2.6.1-2ubuntu0.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:55.4549389Z [1;32m==> azure-arm.image: Setting up motd-news-config (13ubuntu10.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:55.5097182Z [1;32m==> azure-arm.image: Setting up cloud-init (25.3-0ubuntu1~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7000168Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7005762Z [1;32m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7008847Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7054743Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7059695Z [1;32m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:57.7063996Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:58.8094346Z [1;32m==> azure-arm.image: Setting up libpython3.12-minimal:amd64 (3.12.3-1ubuntu0.11) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:58.8745435Z [1;32m==> azure-arm.image: Setting up inetutils-telnet (2:2.5-3ubuntu4.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.0266263Z [1;32m==> azure-arm.image: Setting up linux-cloud-tools-common (6.8.0-101.101) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.6929622Z [1;32m==> azure-arm.image: Setting up libnss3:amd64 (2:3.98-1ubuntu0.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.7445818Z [1;32m==> azure-arm.image: Setting up locales (2.39-0ubuntu8.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8528167Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8534468Z [1;32m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8537214Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8590084Z [1;32m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8595989Z [1;32m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:26:59.8600111Z [1;32m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:00.2686069Z [1;32m==> azure-arm.image: Generating locales (this might take a while)...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.2613081Z [1;32m==> azure-arm.image:   en_US.UTF-8... done[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.2618139Z [1;32m==> azure-arm.image: Generation complete.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.3181733Z [1;32m==> azure-arm.image: Setting up libldap-common (2.6.10+dfsg-0ubuntu0.24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.3616553Z [1;32m==> azure-arm.image: Setting up libglib2.0-0t64:amd64 (2.80.0-6ubuntu3.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.3838758Z [1;32m==> azure-arm.image: No schema files found: doing nothing.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.3957846Z [1;32m==> azure-arm.image: Setting up libglib2.0-data (2.80.0-6ubuntu3.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.4315944Z [1;32m==> azure-arm.image: Setting up libpng16-16t64:amd64 (1.6.43-5ubuntu0.5) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.4593422Z [1;32m==> azure-arm.image: Setting up gir1.2-glib-2.0:amd64 (2.80.0-6ubuntu3.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.4869276Z [1;32m==> azure-arm.image: Setting up libssh-4:amd64 (0.10.6-2ubuntu0.3) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:01.5742530Z [1;32m==> azure-arm.image: Setting up sosreport (4.10.2-0ubuntu0~24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:03.1384813Z [1;32m==> azure-arm.image: Setting up systemd-hwe-hwdb (255.1.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:03.8808713Z [1;32m==> azure-arm.image: Setting up python-apt-common (2.7.7ubuntu5.2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:03.9223395Z [1;32m==> azure-arm.image: Setting up linux-tools-common (6.8.0-101.101) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:03.9568938Z [1;32m==> azure-arm.image: Setting up libldap2:amd64 (2.6.10+dfsg-0ubuntu0.24.04.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:03.9886009Z [1;32m==> azure-arm.image: Setting up initramfs-tools-bin (0.142ubuntu25.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.0379124Z [1;32m==> azure-arm.image: Setting up python3.12-minimal (3.12.3-1ubuntu0.11) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.6202403Z [1;32m==> azure-arm.image: Setting up telnet (0.17+2.5-3ubuntu4.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.6631006Z [1;32m==> azure-arm.image: Setting up libpython3.12-stdlib:amd64 (3.12.3-1ubuntu0.11) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.6891464Z [1;32m==> azure-arm.image: Setting up libcurl4t64:amd64 (8.5.0-2ubuntu10.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.7247596Z [1;32m==> azure-arm.image: Setting up python3-apt (2.7.7ubuntu5.2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:04.8792353Z [1;32m==> azure-arm.image: Setting up python3.12 (3.12.3-1ubuntu0.11) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.5973934Z [1;32m==> azure-arm.image: Setting up libcurl3t64-gnutls:amd64 (8.5.0-2ubuntu10.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.6249456Z [1;32m==> azure-arm.image: Setting up libglib2.0-bin (2.80.0-6ubuntu3.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.6588911Z [1;32m==> azure-arm.image: Setting up libpython3.12t64:amd64 (3.12.3-1ubuntu0.11) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.6898122Z [1;32m==> azure-arm.image: Setting up python3-software-properties (0.99.49.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.8310992Z [1;32m==> azure-arm.image: Setting up curl (8.5.0-2ubuntu10.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.8590355Z [1;32m==> azure-arm.image: Setting up initramfs-tools-core (0.142ubuntu25.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:05.9294889Z [1;32m==> azure-arm.image: Setting up initramfs-tools (0.142ubuntu25.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:06.0139838Z [1;32m==> azure-arm.image: update-initramfs: deferring update (trigger activated)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:06.0459562Z [1;32m==> azure-arm.image: Setting up software-properties-common (0.99.49.4) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:06.1869177Z [1;32m==> azure-arm.image: Processing triggers for dbus (1.14.10-4ubuntu4.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:06.2670184Z [1;32m==> azure-arm.image: Processing triggers for udev (255.4-1ubuntu8.12) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:06.7495227Z [1;32m==> azure-arm.image: Processing triggers for install-info (7.1-3build2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:07.1096200Z [1;32m==> azure-arm.image: Processing triggers for libc-bin (2.39-0ubuntu8.7) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:07.1577508Z [1;32m==> azure-arm.image: Processing triggers for rsyslog (8.2312.0-3ubuntu9.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:07.3021556Z [1;32m==> azure-arm.image: Processing triggers for systemd (255.4-1ubuntu8.12) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:07.3587980Z [1;32m==> azure-arm.image: Processing triggers for man-db (2.12.0-4build2) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:15.6577228Z [1;32m==> azure-arm.image: Processing triggers for plymouth-theme-ubuntu-text (24.004.60-1ubuntu7.1) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:15.7246235Z [1;32m==> azure-arm.image: update-initramfs: deferring update (trigger activated)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:15.7416702Z [1;32m==> azure-arm.image: Processing triggers for initramfs-tools (0.142ubuntu25.8) ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:15.7800651Z [1;32m==> azure-arm.image: update-initramfs: Generating /boot/initrd.img-6.14.0-1017-azure[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6735061Z [1;31m==> azure-arm.image: debconf: unable to initialize frontend: Dialog[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6740764Z [1;31m==> azure-arm.image: debconf: (Dialog frontend will not work on a dumb terminal, an emacs shell buffer, or without a controlling terminal.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6744421Z [1;31m==> azure-arm.image: debconf: falling back to frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6790658Z [1;31m==> azure-arm.image: debconf: unable to initialize frontend: Readline[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6795974Z [1;31m==> azure-arm.image: debconf: (This frontend requires a controlling tty.)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.6800477Z [1;31m==> azure-arm.image: debconf: falling back to frontend: Teletype[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.7900565Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.7905901Z [1;31m==> azure-arm.image: Running kernel seems to be up-to-date.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.7910477Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.7916407Z [1;31m==> azure-arm.image: Restarting services...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:23.9191865Z [1;31m==> azure-arm.image:  systemctl restart chrony.service cron.service multipathd.service packagekit.service polkit.service ssh.service systemd-journald.service systemd-networkd.service systemd-resolved.service systemd-udevd.service udisks2.service walinuxagent.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4188955Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4193863Z [1;31m==> azure-arm.image: Service restarts being deferred:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4197662Z [1;31m==> azure-arm.image:  systemctl restart ModemManager.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4202567Z [1;31m==> azure-arm.image:  /etc/needrestart/restart.d/dbus.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4207047Z [1;31m==> azure-arm.image:  systemctl restart getty@tty1.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4211979Z [1;31m==> azure-arm.image:  systemctl restart networkd-dispatcher.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4216555Z [1;31m==> azure-arm.image:  systemctl restart serial-getty@ttyS0.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4221209Z [1;31m==> azure-arm.image:  systemctl restart systemd-logind.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4226382Z [1;31m==> azure-arm.image:  systemctl restart unattended-upgrades.service[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4230279Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4234800Z [1;31m==> azure-arm.image: No containers need to be restarted.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4238058Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4243591Z [1;31m==> azure-arm.image: User sessions running outdated binaries:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4249180Z [1;31m==> azure-arm.image:  azureuser @ session #1: sshd[1237,1477][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4301787Z [1;31m==> azure-arm.image:  azureuser @ user manager service: systemd[1261][0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4352100Z [1;31m==> azure-arm.image:[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:24.4359803Z [1;31m==> azure-arm.image: No VM guests are running outdated hypervisor (qemu) binaries on this host.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:25.7124052Z [1;32m==> azure-arm.image: Powering off machine ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:25.7129278Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:27:25.7130421Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.4445193Z [1;32m==> azure-arm.image:  -> Compute ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.4446612Z [1;32m==> azure-arm.image:  -> Compute Name              : 'pkrvmawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.4449978Z [1;32m==> azure-arm.image:  -> Compute Location          : 'eastus'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.4453436Z [1;32m==> azure-arm.image: Generalizing machine ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.7559845Z [1;32m==> azure-arm.image: Capturing image ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.7562292Z [1;32m==> azure-arm.image:  -> Image ResourceGroupName   : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.7565434Z [1;32m==> azure-arm.image:  -> Image Name                : 'ubuntu-server-24.04-22724892857'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:06.7566630Z [1;32m==> azure-arm.image:  -> Image Location            : 'eastus'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4662637Z [1;32m==> azure-arm.image: Publishing to Shared Image Gallery ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4667810Z [1;32m==> azure-arm.image:  -> Source ID used for SIG publish        : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/ubuntu-server-24.04-22724892857'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4670083Z [1;32m==> azure-arm.image:  -> SIG publish resource group            : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4671483Z [1;32m==> azure-arm.image:  -> SIG gallery name                      : 'acgpackerfactoryeastus'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4673219Z [1;32m==> azure-arm.image:  -> SIG image name                        : 'imgdef-ubuntu-server-2404-gen2'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4675399Z [1;32m==> azure-arm.image:  -> SIG image version                     : '2026.03.01'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4676434Z [1;32m==> azure-arm.image:  -> SIG target regions                    : '[eastus]'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4678122Z [1;32m==> azure-arm.image:  -> SIG storage account type              : ''[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4679454Z [1;32m==> azure-arm.image:  -> SIG image version endoflife date      : ''[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:28:17.4681272Z [1;32m==> azure-arm.image:  -> SIG image version exclude from latest : 'false'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:20.0505292Z [1;32m==> azure-arm.image:  -> Shared Gallery Image Version ID : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/galleries/acgpackerfactoryeastus/images/imgdef-ubuntu-server-2404-gen2/versions/2026.03.01'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:20.0507369Z [1;32m==> azure-arm.image: 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:20.0507932Z ==> azure-arm.image: Deleting Virtual Machine deployment and its attached resources...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:32.6526744Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Compute/virtualMachines : 'pkrvmawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:43.3982319Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/networkInterfaces : 'pkrniawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:53.7969415Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/virtualNetworks : 'pkrvnawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:53.9944081Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/publicIPAddresses : 'pkripawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:36:57.2232452Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/networkSecurityGroups : 'pkrsgawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:07.7975137Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Compute/disks : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/disks/pkrosawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:07.7977540Z [1;32m==> azure-arm.image: Removing the created Deployment object: 'pkrdpawapelnk35'[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1236693Z [1;32m==> azure-arm.image: 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1237833Z ==> azure-arm.image: The resource group was not created by Packer, not deleting ...[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1240545Z [1;32m==> azure-arm.image: Running post-processor:  (type manifest)[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1274508Z [1;32mBuild 'azure-arm.image' finished after 11 minutes 50 seconds.[0m
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1276409Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1276922Z ==> Wait completed after 11 minutes 50 seconds
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1277526Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1277803Z ==> Builds finished. The artifacts of successful builds are:
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1282727Z --> azure-arm.image: Azure.ResourceManagement.VMImage:
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1286496Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1286855Z OSType: Linux
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1287405Z ManagedImageResourceGroupName: RG-PACKER-IMAGE-FACTORY-EASTUS
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1288152Z ManagedImageName: ubuntu-server-24.04-22724892857
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1289971Z ManagedImageId: /subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/ubuntu-server-24.04-22724892857
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1291276Z ManagedImageLocation: eastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1293334Z ManagedImageSharedImageGalleryId: /subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/galleries/acgpackerfactoryeastus/images/imgdef-ubuntu-server-2404-gen2/versions/2026.03.01
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1295127Z SharedImageGalleryResourceGroup: RG-PACKER-IMAGE-FACTORY-EASTUS
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1295834Z SharedImageGalleryName: acgpackerfactoryeastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1296446Z SharedImageGalleryImageName: imgdef-ubuntu-server-2404-gen2
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1297085Z SharedImageGalleryImageVersion: 2026.03.01
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1297594Z SharedImageGalleryReplicatedRegions: eastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1297906Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1310064Z --> azure-arm.image: Azure.ResourceManagement.VMImage:
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1310889Z 
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1311083Z OSType: Linux
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1315813Z ManagedImageResourceGroupName: RG-PACKER-IMAGE-FACTORY-EASTUS
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1317060Z ManagedImageName: ubuntu-server-24.04-22724892857
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1318749Z ManagedImageId: /subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/ubuntu-server-24.04-22724892857
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1319862Z ManagedImageLocation: eastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1321152Z ManagedImageSharedImageGalleryId: /subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/galleries/acgpackerfactoryeastus/images/imgdef-ubuntu-server-2404-gen2/versions/2026.03.01
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1322214Z SharedImageGalleryResourceGroup: RG-PACKER-IMAGE-FACTORY-EASTUS
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1322626Z SharedImageGalleryName: acgpackerfactoryeastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1323016Z SharedImageGalleryImageName: imgdef-ubuntu-server-2404-gen2
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1323612Z SharedImageGalleryImageVersion: 2026.03.01
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1323932Z SharedImageGalleryReplicatedRegions: eastus
+Build and Publish Packer Image	Packer Init and Build	2026-03-05T15:37:18.1324133Z 
+Build and Publish Packer Image	Post-deployment Security Checks	﻿2026-03-05T15:37:18.3346889Z ##[group]Run set -e
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3347170Z [36;1mset -e[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3347459Z [36;1mecho "Running post-deployment mock security checks..."[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3347820Z [36;1mif [[ "linux" == "windows" ]]; then[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3348205Z [36;1m   echo "Triggering PowerShell Windows check script on deployed VM."[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3349748Z [36;1m   # Pretend we are executing scripts/security-update-check-windows.ps1[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3350142Z [36;1melse[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3350425Z [36;1m   echo "Triggering Bash Linux check script on deployed VM."[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3350877Z [36;1m   # Pretend we are executing scripts/security-update-check-linux.sh[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3351242Z [36;1mfi[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3351422Z [36;1m[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3351615Z [36;1mmkdir -p evidence/scans[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3352022Z [36;1mecho "Security updates verified at $(date)" > evidence/scans/updates-installed.txt[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3352588Z [36;1mecho "No pending reboots detected" > evidence/scans/pending-reboot-state.txt[0m
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3400939Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3401274Z ##[endgroup]
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3468695Z Running post-deployment mock security checks...
+Build and Publish Packer Image	Post-deployment Security Checks	2026-03-05T15:37:18.3469320Z Triggering Bash Linux check script on deployed VM.
+Build and Publish Packer Image	Upload Artifacts	﻿2026-03-05T15:37:18.3549046Z ##[group]Run actions/upload-artifact@v4
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3549354Z with:
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3549597Z   name: security-evidence-profiles/ubuntu-server
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3549895Z   path: evidence/scans/
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3550127Z   if-no-files-found: warn
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3550355Z   compression-level: 6
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3550569Z   overwrite: false
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3550783Z   include-hidden-files: false
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.3551022Z ##[endgroup]
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.5727037Z With the provided path, there will be 2 files uploaded
+Build and Publish Packer Image	Upload Artifacts	2026-03-05T15:37:18.5774407Z ##[error]The artifact name is not valid: security-evidence-profiles/ubuntu-server. Contains the following character:  Forward slash /
+Build and Publish Packer Image	Upload Artifacts	          
+Build and Publish Packer Image	Upload Artifacts	Invalid characters include:  Double quote ", Colon :, Less than <, Greater than >, Vertical bar |, Asterisk *, Question mark ?, Carriage return \r, Line feed \n, Backslash \, Forward slash /
+Build and Publish Packer Image	Upload Artifacts	          
+Build and Publish Packer Image	Upload Artifacts	These characters are not allowed in the artifact name due to limitations with certain file systems such as NTFS. To maintain file system agnostic behavior, these characters are intentionally not allowed to prevent potential problems with downloads on different file systems.
+Build and Publish Packer Image	Post Setup Azure Credentials	﻿2026-03-05T15:37:18.5932886Z Post job cleanup.
+Build and Publish Packer Image	Post Setup Azure Credentials	2026-03-05T15:37:18.6342259Z Clearing azure cli accounts from the local cache.
+Build and Publish Packer Image	Post Setup Azure Credentials	2026-03-05T15:37:18.6359257Z [command]/usr/bin/az account clear
+Build and Publish Packer Image	Post Run actions/checkout@v4	﻿2026-03-05T15:37:19.2677504Z Post job cleanup.
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3643484Z [command]/usr/bin/git version
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3687040Z git version 2.53.0
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3730710Z Temporarily overriding HOME='/home/runner/work/_temp/b191a9bf-5924-491c-b4e5-d70702fe270b' before making global git config changes
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3731953Z Adding repository directory to the temporary git global config as a safe directory
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3743859Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/azure-packer-image-factory/azure-packer-image-factory
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3782147Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.3815733Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4073441Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4097136Z http.https://github.com/.extraheader
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4110270Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4142749Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4377359Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+Build and Publish Packer Image	Post Run actions/checkout@v4	2026-03-05T15:37:19.4409486Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+Build and Publish Packer Image	Complete job	﻿2026-03-05T15:37:19.4765127Z Cleaning up orphan processes

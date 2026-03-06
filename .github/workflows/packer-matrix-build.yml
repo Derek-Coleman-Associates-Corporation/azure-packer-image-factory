@@ -1,0 +1,164 @@
+name: Global Matrix Packer Build
+
+on:
+  workflow_dispatch:
+    inputs:
+      image_version:
+        description: 'Image version (yyyy.mm.xx)'
+        required: true
+        type: string
+      runs_on_pool:
+        description: 'Runner pool to use'
+        required: false
+        default: 'ubuntu-latest'
+        type: string
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  discover-profiles:
+    name: Map Image Profiles
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+      - id: set-matrix
+        run: |
+          PROFILES=$(find profiles -name "profile.yml" -exec dirname {} \; | sort | jq -R -s -c 'split("\n")[:-1]')
+          echo "Discovered Profiles: $PROFILES"
+          echo "matrix=$PROFILES" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build Image ${{ matrix.profile }}
+    needs: discover-profiles
+    runs-on: ${{ inputs.runs_on_pool || 'ubuntu-latest' }}
+    continue-on-error: true
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        profile: ${{ fromJson(needs.discover-profiles.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Azure Credentials
+        uses: azure/login@v2
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+      - name: Setup Packer
+        uses: hashicorp/setup-packer@v3
+
+      - name: Resolve profile metadata
+        id: profile
+        shell: bash
+        run: |
+          set -e
+          PROFILE_FILE="${{ matrix.profile }}/profile.yml"
+          if [[ ! -f "$PROFILE_FILE" ]]; then
+            echo "Profile file missing at $PROFILE_FILE"
+            exit 1
+          fi
+
+          profile_id="$(awk -F': ' '/^profile_id:/{print $2; exit}' "$PROFILE_FILE")"
+          os_family="$(awk -F': ' '/^os_family:/{print $2; exit}' "$PROFILE_FILE")"
+          source_urn="$(awk -F': ' '/^source_image_urn:/{print $2; exit}' "$PROFILE_FILE")"
+          image_def="$(awk -F': ' '$1 ~ /image_definition/{print $2; exit}' "$PROFILE_FILE")"
+          sig_sku="$(awk -F': ' '$1 ~ /sku/{print $2; exit}' "$PROFILE_FILE")"
+          vm_size="$(awk -F': ' '$1 ~ /vm_size/{print $2; exit}' "$PROFILE_FILE")"
+          
+          IFS=':' read -r source_pub source_offer source_sku source_ver <<< "$source_urn"
+
+          echo "os_family=$os_family" >> "$GITHUB_OUTPUT"
+          echo "profile_id=$profile_id" >> "$GITHUB_OUTPUT"
+          echo "source_pub=$source_pub" >> "$GITHUB_OUTPUT"
+          echo "source_offer=$source_offer" >> "$GITHUB_OUTPUT"
+          echo "source_sku=$source_sku" >> "$GITHUB_OUTPUT"
+          echo "source_ver=$source_ver" >> "$GITHUB_OUTPUT"
+          echo "image_definition=$image_def" >> "$GITHUB_OUTPUT"
+          echo "vm_size=$vm_size" >> "$GITHUB_OUTPUT"
+          echo "temp_rg=rg-packer-temp-${profile_id}-${{ github.run_id }}" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure Image Definition Exists
+        shell: bash
+        run: |
+          set -e
+          echo "We would ensure definition ${{ steps.profile.outputs.image_definition }} exists in acgpackerfactoryeastus here."
+
+      - name: Packer Init and Build
+        id: packer
+        shell: bash
+        env:
+          ARM_CLIENT_ID: ${{ secrets.AZURE_CLIENT_ID }}
+          ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+          ARM_TENANT_ID: ${{ secrets.AZURE_TENANT_ID }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        run: |
+          set -e
+          
+          OS_FAMILY="${{ steps.profile.outputs.os_family }}"
+          
+          if [ "$OS_FAMILY" == "windows" ]; then
+            TEMPLATE_FILE="packer/windows/windows.pkr.hcl"
+            EXTRA_VARS=( "-var" "vm_admin_password=${{ secrets.IMAGE_TEST_VM_ADMIN_PASSWORD }}" )
+          elif [ "$OS_FAMILY" == "linux" ]; then
+            TEMPLATE_FILE="packer/ubuntu/ubuntu.pkr.hcl"
+            EXTRA_VARS=()
+          else
+            echo "Unsupported OS family: $OS_FAMILY"
+            exit 1
+          fi
+
+          packer init "$TEMPLATE_FILE"
+          
+          packer build \
+            -force \
+            -var "profile_id=${{ steps.profile.outputs.profile_id }}" \
+            -var "location=eastus" \
+            -var "build_resource_group_name=RG-PACKER-IMAGE-FACTORY-EASTUS" \
+            -var "vm_size=${{ steps.profile.outputs.vm_size }}" \
+            -var "managed_image_name=${{ steps.profile.outputs.profile_id }}-${{ github.run_id }}" \
+            -var "source_image_publisher=${{ steps.profile.outputs.source_pub }}" \
+            -var "source_image_offer=${{ steps.profile.outputs.source_offer }}" \
+            -var "source_image_sku=${{ steps.profile.outputs.source_sku }}" \
+            -var "source_image_version=${{ steps.profile.outputs.source_ver }}" \
+            -var "gallery_resource_group=RG-PACKER-IMAGE-FACTORY-EASTUS" \
+            -var "gallery_name=acgpackerfactoryeastus" \
+            -var "image_definition=${{ steps.profile.outputs.image_definition }}" \
+            -var "image_version=${{ inputs.image_version }}" \
+            -var "replication_regions=[\"eastus\"]" \
+            "${EXTRA_VARS[@]}" \
+            "$TEMPLATE_FILE" 2>&1 | tee packerbuild.log
+
+      - name: Capture Build Failures
+        if: failure()
+        shell: bash
+        run: |
+          echo "Packer Build Failed for ${{ matrix.profile }}. Extracting error tail..."
+          mkdir -p evidence/failures
+          tail -n 50 packerbuild.log > "evidence/failures/failed-${{ steps.profile.outputs.profile_id }}.txt"
+
+      - name: Cleanup Stranded Packer VMs
+        if: always()
+        shell: bash
+        run: |
+          echo "Scanning for and deleting orphaned Packer Resource Groups..."
+          # Match precisely the expected Packer temporary naming scheme per workflow ID
+          STRANDED_RGS=$(az group list --query "[?starts_with(name, 'pkr-Resource-Group-')].name" -o tsv)
+          for rg in $STRANDED_RGS; do
+            echo "Attempting cleanup on stranded Resource Group: $rg"
+            az group delete --name "$rg" --yes --no-wait || echo "Failed to delete $rg"
+          done
+
+      - name: Upload Global Build Errors
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: global-build-errors-${{ steps.profile.outputs.profile_id }}
+          path: evidence/failures/
+          retention-days: 7
