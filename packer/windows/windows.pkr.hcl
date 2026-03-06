@@ -31,6 +31,11 @@ variable "azure_tags" {
   default = {}
 }
 
+variable "vm_admin_password" {
+  type    = string
+  default = ""
+}
+
 source "azure-arm" "image" {
   use_azure_cli_auth = true
 
