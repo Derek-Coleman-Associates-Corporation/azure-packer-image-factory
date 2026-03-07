@@ -31,7 +31,7 @@ variable "azure_tags" {
 }
 
 source "azure-arm" "image" {
-  use_azure_cli_auth = true
+  use_azure_cli_auth = false
 
   os_type                           = "Linux"
   image_publisher                   = var.source_image_publisher
