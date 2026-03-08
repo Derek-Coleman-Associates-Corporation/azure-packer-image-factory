@@ -1,0 +1,11 @@
+profile_id: sql2019-ws2022-web
+os_family: windows
+source_image_urn: MicrosoftSQLServer:sql2019-ws2022:web:latest
+security_type: TrustedLaunchSupported
+gallery:
+  image_definition: imgdef-sql2019-ws2022-web
+  publisher: dcassociatesgroup-com
+  offer: sql2019-ws2022
+  sku: web
+test:
+  vm_size: Standard_D4as_v5
