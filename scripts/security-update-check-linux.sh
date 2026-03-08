@@ -48,4 +48,13 @@ echo "------------------------------------------------"
 mdatp scan quick || echo "WARNING: mdatp scan failed"
 echo "------------------------------------------------"
 
-echo "Security Check and Defender Install Complete."
+echo "------------------------------------------------"
+echo "UNINSTALLING DEFENDER (Marketplace Requirement):"
+echo "------------------------------------------------"
+sudo apt-get purge -y mdatp || echo "WARNING: mdatp purge failed"
+# Ensure the onboarding info and remnants are completely removed
+sudo rm -rf /etc/opt/microsoft/mdatp
+sudo rm -rf /var/opt/microsoft/mdatp
+echo "------------------------------------------------"
+
+echo "Security Check and Defender Clean Complete."
