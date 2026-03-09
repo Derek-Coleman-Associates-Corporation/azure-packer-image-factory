@@ -96,8 +96,8 @@ jobs:
               -r "$GALLERY_NAME" \
               -i "$DEF_NAME" \
               -p "DerekColeman" \
-              -f "${{ steps.profile.outputs.offer }}" \
-              -s "${{ steps.profile.outputs.sku }}" \
+              -f "${{ steps.profile.outputs.source_offer }}" \
+              -s "${{ steps.profile.outputs.source_sku }}" \
               --os-type "$OS_TYPE" \
               --os-state Generalized \
               --hyper-v-generation "${{ steps.profile.outputs.security_type == 'TrustedLaunchSupported' && 'V2' || 'V1' }}" \
