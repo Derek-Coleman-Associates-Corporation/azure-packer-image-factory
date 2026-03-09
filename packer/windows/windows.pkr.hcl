@@ -41,7 +41,6 @@ variable "azure_tags" {
 
 source "azure-arm" "image" {
   use_azure_cli_auth = true
-  location                          = var.location
 
   os_type                           = "Windows"
   image_publisher                   = var.source_image_publisher
