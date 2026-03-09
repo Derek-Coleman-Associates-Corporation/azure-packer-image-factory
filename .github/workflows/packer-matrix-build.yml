@@ -94,6 +94,11 @@ jobs:
           OS_TYPE="Windows"
           if [ "${{ steps.profile.outputs.os_family }}" == "linux" ]; then OS_TYPE="Linux"; fi
           
+          HV_GEN="V1"
+          if [[ "${{ steps.profile.outputs.source_sku }}" == *"gen2"* ]]; then
+            HV_GEN="V2"
+          fi
+          
           echo "Verifying image definition: $DEF_NAME"
           # Try to get the image definition, create if it doesn't exist
           if ! az sig image-definition show -g "$RG_NAME" -r "$GALLERY_NAME" -i "$DEF_NAME" &>/dev/null; then
@@ -107,7 +112,7 @@ jobs:
               -s "${{ steps.profile.outputs.source_sku }}" \
               --os-type "$OS_TYPE" \
               --os-state Generalized \
-              --hyper-v-generation "${{ steps.profile.outputs.security_type == 'TrustedLaunchSupported' && 'V2' || 'V1' }}" \
+              --hyper-v-generation "$HV_GEN" \
               --only-show-errors
           else
             echo "Image definition $DEF_NAME already exists."

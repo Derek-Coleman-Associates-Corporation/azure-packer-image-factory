@@ -1,0 +1,529 @@
+﻿2026-03-09T18:59:35.1457614Z Current runner version: '2.332.0'
+2026-03-09T18:59:35.1465516Z Runner name: 'ghrnr1-eastus'
+2026-03-09T18:59:35.1466704Z Runner group name: 'default'
+2026-03-09T18:59:35.1467700Z Machine name: 'ghrnr000001'
+2026-03-09T18:59:35.1471366Z ##[group]GITHUB_TOKEN Permissions
+2026-03-09T18:59:35.1474216Z Contents: read
+2026-03-09T18:59:35.1475066Z Metadata: read
+2026-03-09T18:59:35.1475755Z ##[endgroup]
+2026-03-09T18:59:35.1478257Z Secret source: Actions
+2026-03-09T18:59:35.1479523Z Prepare workflow directory
+2026-03-09T18:59:35.2065444Z Prepare all required actions
+2026-03-09T18:59:35.2114856Z Getting action download info
+2026-03-09T18:59:35.5145241Z Download action repository 'actions/checkout@v4' (SHA:34e114876b0b11c390a56381ad16ebd13914f8d5)
+2026-03-09T18:59:35.7330711Z Download action repository 'azure/login@v2' (SHA:a457da9ea143d694b1b9c7c869ebb04ebe844ef5)
+2026-03-09T18:59:35.9036666Z Download action repository 'hashicorp/setup-packer@v3' (SHA:1aa358be5cf73883762b302a3a03abd66e75b232)
+2026-03-09T18:59:36.1258463Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-03-09T18:59:36.5326809Z Complete job name: Build Image profiles/sql2019-ws2019-standard-gen2
+2026-03-09T18:59:36.5964035Z ##[group]Run actions/checkout@v4
+2026-03-09T18:59:36.5964963Z with:
+2026-03-09T18:59:36.5965694Z   repository: Derek-Coleman-Associates-Corporation/azure-packer-image-factory
+2026-03-09T18:59:36.5966677Z   token: ***
+2026-03-09T18:59:36.5967190Z   ssh-strict: true
+2026-03-09T18:59:36.5967702Z   ssh-user: git
+2026-03-09T18:59:36.5968225Z   persist-credentials: true
+2026-03-09T18:59:36.5968781Z   clean: true
+2026-03-09T18:59:36.5969304Z   sparse-checkout-cone-mode: true
+2026-03-09T18:59:36.5969887Z   fetch-depth: 1
+2026-03-09T18:59:36.5970393Z   fetch-tags: false
+2026-03-09T18:59:36.5970914Z   show-progress: true
+2026-03-09T18:59:36.5971447Z   lfs: false
+2026-03-09T18:59:36.5971940Z   submodules: false
+2026-03-09T18:59:36.5972462Z   set-safe-directory: true
+2026-03-09T18:59:36.5973205Z ##[endgroup]
+2026-03-09T18:59:36.6950416Z Syncing repository: Derek-Coleman-Associates-Corporation/azure-packer-image-factory
+2026-03-09T18:59:36.6953183Z ##[group]Getting Git version info
+2026-03-09T18:59:36.6955310Z Working directory is '/home/azureuser/actions-runner/_work/azure-packer-image-factory/azure-packer-image-factory'
+2026-03-09T18:59:36.6957400Z [command]/usr/bin/git version
+2026-03-09T18:59:36.6958870Z git version 2.34.1
+2026-03-09T18:59:36.6961884Z ##[endgroup]
+2026-03-09T18:59:36.6967851Z Temporarily overriding HOME='/home/azureuser/actions-runner/_work/_temp/39faa4fa-71e2-4843-bc70-197fbc609eb1' before making global git config changes
+2026-03-09T18:59:36.6970139Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-09T18:59:36.6985420Z [command]/usr/bin/git config --global --add safe.directory /home/azureuser/actions-runner/_work/azure-packer-image-factory/azure-packer-image-factory
+2026-03-09T18:59:36.7000674Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-03-09T18:59:36.7019294Z https://github.com/Derek-Coleman-Associates-Corporation/azure-packer-image-factory
+2026-03-09T18:59:36.7032908Z ##[group]Removing previously created refs, to avoid conflicts
+2026-03-09T18:59:36.7036714Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-03-09T18:59:36.7054398Z refs/heads/master
+2026-03-09T18:59:36.7066033Z [command]/usr/bin/git checkout --detach
+2026-03-09T18:59:36.7131631Z HEAD is now at 17c569a fix(actions): ensure azure cli is installed on runner nodes before invoking azure/login and cleanup steps
+2026-03-09T18:59:36.7137377Z M	packer/ubuntu/packer-manifest.json
+2026-03-09T18:59:36.7174158Z [command]/usr/bin/git branch --delete --force master
+2026-03-09T18:59:36.7194002Z Deleted branch master (was 17c569a).
+2026-03-09T18:59:36.7230029Z ##[endgroup]
+2026-03-09T18:59:36.7230813Z [command]/usr/bin/git submodule status
+2026-03-09T18:59:36.7421649Z ##[group]Cleaning the repository
+2026-03-09T18:59:36.7423576Z [command]/usr/bin/git clean -ffdx
+2026-03-09T18:59:36.7449102Z Removing packerbuild.log
+2026-03-09T18:59:36.7459879Z [command]/usr/bin/git reset --hard HEAD
+2026-03-09T18:59:36.7489798Z HEAD is now at 17c569a fix(actions): ensure azure cli is installed on runner nodes before invoking azure/login and cleanup steps
+2026-03-09T18:59:36.7498806Z ##[endgroup]
+2026-03-09T18:59:36.7501663Z ##[group]Disabling automatic garbage collection
+2026-03-09T18:59:36.7502718Z [command]/usr/bin/git config --local gc.auto 0
+2026-03-09T18:59:36.7532996Z ##[endgroup]
+2026-03-09T18:59:36.7534871Z ##[group]Setting up auth
+2026-03-09T18:59:36.7538362Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-09T18:59:36.7563497Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-09T18:59:36.7749729Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-09T18:59:36.7775891Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-09T18:59:36.7964924Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-09T18:59:36.7991144Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-09T18:59:36.8177727Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-03-09T18:59:36.8206760Z ##[endgroup]
+2026-03-09T18:59:36.8208357Z ##[group]Fetching the repository
+2026-03-09T18:59:36.8215982Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c20638db9ba935d71369948f1887ad8028ff2acc:refs/remotes/origin/master
+2026-03-09T18:59:36.9948341Z From https://github.com/Derek-Coleman-Associates-Corporation/azure-packer-image-factory
+2026-03-09T18:59:36.9951975Z  + 17c569a...c20638d c20638db9ba935d71369948f1887ad8028ff2acc -> origin/master  (forced update)
+2026-03-09T18:59:36.9968054Z ##[endgroup]
+2026-03-09T18:59:36.9969151Z ##[group]Determining the checkout info
+2026-03-09T18:59:36.9970483Z ##[endgroup]
+2026-03-09T18:59:36.9971841Z [command]/usr/bin/git sparse-checkout disable
+2026-03-09T18:59:37.0005096Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-03-09T18:59:37.0030808Z ##[group]Checking out the ref
+2026-03-09T18:59:37.0032169Z [command]/usr/bin/git checkout --progress --force -B master refs/remotes/origin/master
+2026-03-09T18:59:37.0064117Z Warning: you are leaving 1 commit behind, not connected to
+2026-03-09T18:59:37.0066384Z any of your branches:
+2026-03-09T18:59:37.0066976Z 
+2026-03-09T18:59:37.0068850Z   17c569a fix(actions): ensure azure cli is installed on runner nodes before invoking azure/login and cleanup steps
+2026-03-09T18:59:37.0069947Z 
+2026-03-09T18:59:37.0070475Z If you want to keep it by creating a new branch, this may be a good time
+2026-03-09T18:59:37.0071481Z to do so with:
+2026-03-09T18:59:37.0071849Z 
+2026-03-09T18:59:37.0072148Z  git branch <new-branch-name> 17c569a
+2026-03-09T18:59:37.0072553Z 
+2026-03-09T18:59:37.0119765Z Switched to a new branch 'master'
+2026-03-09T18:59:37.0121006Z Branch 'master' set up to track remote branch 'master' from 'origin'.
+2026-03-09T18:59:37.0128329Z ##[endgroup]
+2026-03-09T18:59:37.0155907Z [command]/usr/bin/git log -1 --format=%H
+2026-03-09T18:59:37.0175213Z c20638db9ba935d71369948f1887ad8028ff2acc
+2026-03-09T18:59:37.0385930Z ##[group]Run azure/login@v2
+2026-03-09T18:59:37.0386578Z with:
+2026-03-09T18:59:37.0387363Z   client-id: ***
+2026-03-09T18:59:37.0388016Z   tenant-id: ***
+2026-03-09T18:59:37.0388702Z   subscription-id: ***
+2026-03-09T18:59:37.0389370Z   enable-AzPSSession: false
+2026-03-09T18:59:37.0389974Z   environment: azurecloud
+2026-03-09T18:59:37.0390801Z   allow-no-subscriptions: false
+2026-03-09T18:59:37.0391526Z   audience: api://AzureADTokenExchange
+2026-03-09T18:59:37.0392220Z   auth-type: SERVICE_PRINCIPAL
+2026-03-09T18:59:37.0392829Z ##[endgroup]
+2026-03-09T18:59:37.0712648Z Running Azure CLI Login.
+2026-03-09T18:59:37.3359853Z [command]/usr/bin/az cloud set -n azurecloud
+2026-03-09T18:59:37.6712071Z Done setting cloud: "azurecloud"
+2026-03-09T18:59:37.7634076Z Federated token details:
+2026-03-09T18:59:37.7637361Z  issuer - https://token.actions.githubusercontent.com
+2026-03-09T18:59:37.7736857Z  subject claim - repo:Derek-Coleman-Associates-Corporation/azure-packer-image-factory:ref:refs/heads/master
+2026-03-09T18:59:37.7738645Z  audience - api://AzureADTokenExchange
+2026-03-09T18:59:37.7740407Z  job_workflow_ref - Derek-Coleman-Associates-Corporation/azure-packer-image-factory/.github/workflows/packer-matrix-build.yml@refs/heads/master
+2026-03-09T18:59:37.7742266Z Attempting Azure CLI login by using OIDC...
+2026-03-09T18:59:39.1127984Z Subscription is set successfully.
+2026-03-09T18:59:39.1135567Z Azure CLI login succeeds by using OIDC.
+2026-03-09T18:59:39.1280052Z ##[group]Run hashicorp/setup-packer@v3
+2026-03-09T18:59:39.1280977Z with:
+2026-03-09T18:59:39.1281521Z   version: latest
+2026-03-09T18:59:39.1282135Z ##[endgroup]
+2026-03-09T18:59:39.2486703Z Installing packer:latest and adding it to GitHub Actions Path
+2026-03-09T18:59:39.4274194Z Downloading packer_1.15.0_linux_amd64.zip.
+2026-03-09T18:59:39.7242316Z [command]/usr/bin/unzip -o -q /home/azureuser/actions-runner/_work/_temp/packer_1.15.0_linux_amd64.zip
+2026-03-09T18:59:40.0754383Z packer:latest added to path
+2026-03-09T18:59:40.2930650Z ##[group]Run set -e
+2026-03-09T18:59:40.2930941Z [36;1mset -e[0m
+2026-03-09T18:59:40.2931257Z [36;1mPROFILE_FILE="profiles/sql2019-ws2019-standard-gen2/profile.yml"[0m
+2026-03-09T18:59:40.2931603Z [36;1mif [[ ! -f "$PROFILE_FILE" ]]; then[0m
+2026-03-09T18:59:40.2931873Z [36;1m  echo "Profile file missing at $PROFILE_FILE"[0m
+2026-03-09T18:59:40.2932154Z [36;1m  exit 1[0m
+2026-03-09T18:59:40.2932314Z [36;1mfi[0m
+2026-03-09T18:59:40.2932460Z [36;1m[0m
+2026-03-09T18:59:40.2932718Z [36;1mprofile_id="$(awk -F': ' '/^profile_id:/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2933108Z [36;1mos_family="$(awk -F': ' '/^os_family:/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2933503Z [36;1msource_urn="$(awk -F': ' '/^source_image_urn:/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2934056Z [36;1mimage_def="$(awk -F': ' '$1 ~ /image_definition/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2934481Z [36;1msig_sku="$(awk -F': ' '$1 ~ /sku/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2934830Z [36;1mvm_size="$(awk -F': ' '$1 ~ /vm_size/{print $2; exit}' "$PROFILE_FILE")"[0m
+2026-03-09T18:59:40.2935132Z [36;1m[0m
+2026-03-09T18:59:40.2935402Z [36;1mIFS=':' read -r source_pub source_offer source_sku source_ver <<< "$source_urn"[0m
+2026-03-09T18:59:40.2935705Z [36;1m[0m
+2026-03-09T18:59:40.2935910Z [36;1mecho "os_family=$os_family" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2936210Z [36;1mecho "profile_id=$profile_id" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2936521Z [36;1mecho "source_pub=$source_pub" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2936846Z [36;1mecho "source_offer=$source_offer" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2937151Z [36;1mecho "source_sku=$source_sku" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2937438Z [36;1mecho "source_ver=$source_ver" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2937733Z [36;1mecho "image_definition=$image_def" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2938030Z [36;1mecho "vm_size=$vm_size" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2938359Z [36;1mecho "temp_rg=rg-packer-temp-${profile_id}-22863935170" >> "$GITHUB_OUTPUT"[0m
+2026-03-09T18:59:40.2959691Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-09T18:59:40.2960010Z ##[endgroup]
+2026-03-09T18:59:40.3176085Z ##[group]Run set -e
+2026-03-09T18:59:40.3176511Z [36;1mset -e[0m
+2026-03-09T18:59:40.3176734Z [36;1mDEF_NAME="imgdef-sql2019-ws2019-standard-gen2"[0m
+2026-03-09T18:59:40.3177034Z [36;1mRG_NAME="RG-PACKER-IMAGE-FACTORY-EASTUS"[0m
+2026-03-09T18:59:40.3177301Z [36;1mGALLERY_NAME="acgpackerfactoryeastus"[0m
+2026-03-09T18:59:40.3177537Z [36;1mOS_TYPE="Windows"[0m
+2026-03-09T18:59:40.3177768Z [36;1mif [ "windows" == "linux" ]; then OS_TYPE="Linux"; fi[0m
+2026-03-09T18:59:40.3178012Z [36;1m[0m
+2026-03-09T18:59:40.3178207Z [36;1mecho "Verifying image definition: $DEF_NAME"[0m
+2026-03-09T18:59:40.3178522Z [36;1m# Try to get the image definition, create if it doesn't exist[0m
+2026-03-09T18:59:40.3178939Z [36;1mif ! az sig image-definition show -g "$RG_NAME" -r "$GALLERY_NAME" -i "$DEF_NAME" &>/dev/null; then[0m
+2026-03-09T18:59:40.3179409Z [36;1m  echo "Creating missing Image Definition $DEF_NAME in $GALLERY_NAME ($RG_NAME)..."[0m
+2026-03-09T18:59:40.3179786Z [36;1m  az sig image-definition create \[0m
+2026-03-09T18:59:40.3180005Z [36;1m    -g "$RG_NAME" \[0m
+2026-03-09T18:59:40.3180211Z [36;1m    -r "$GALLERY_NAME" \[0m
+2026-03-09T18:59:40.3180413Z [36;1m    -i "$DEF_NAME" \[0m
+2026-03-09T18:59:40.3180624Z [36;1m    -p "dcassociatesgroup-com" \[0m
+2026-03-09T18:59:40.3180849Z [36;1m    -f "sql2019-ws2019" \[0m
+2026-03-09T18:59:40.3181052Z [36;1m    -s "standard-gen2" \[0m
+2026-03-09T18:59:40.3181253Z [36;1m    --os-type "$OS_TYPE" \[0m
+2026-03-09T18:59:40.3181463Z [36;1m    --os-state Generalized \[0m
+2026-03-09T18:59:40.3181674Z [36;1m    --hyper-v-generation "V1" \[0m
+2026-03-09T18:59:40.3181888Z [36;1m    --only-show-errors[0m
+2026-03-09T18:59:40.3182079Z [36;1melse[0m
+2026-03-09T18:59:40.3182285Z [36;1m  echo "Image definition $DEF_NAME already exists."[0m
+2026-03-09T18:59:40.3182528Z [36;1mfi[0m
+2026-03-09T18:59:40.3198117Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-09T18:59:40.3198410Z ##[endgroup]
+2026-03-09T18:59:40.3231876Z Verifying image definition: imgdef-sql2019-ws2019-standard-gen2
+2026-03-09T18:59:41.2357283Z Image definition imgdef-sql2019-ws2019-standard-gen2 already exists.
+2026-03-09T18:59:41.2404364Z ##[group]Run set -e
+2026-03-09T18:59:41.2404720Z [36;1mset -e[0m
+2026-03-09T18:59:41.2404956Z [36;1m[0m
+2026-03-09T18:59:41.2405188Z [36;1mOS_FAMILY="windows"[0m
+2026-03-09T18:59:41.2405473Z [36;1m[0m
+2026-03-09T18:59:41.2405721Z [36;1mif [ "$OS_FAMILY" == "windows" ]; then[0m
+2026-03-09T18:59:41.2406148Z [36;1m  TEMPLATE_FILE="packer/windows/windows.pkr.hcl"[0m
+2026-03-09T18:59:41.2406595Z [36;1m  EXTRA_VARS=( "-var" "vm_admin_password=" )[0m
+2026-03-09T18:59:41.2406995Z [36;1melif [ "$OS_FAMILY" == "linux" ]; then[0m
+2026-03-09T18:59:41.2407417Z [36;1m  TEMPLATE_FILE="packer/ubuntu/ubuntu.pkr.hcl"[0m
+2026-03-09T18:59:41.2407794Z [36;1m  EXTRA_VARS=()[0m
+2026-03-09T18:59:41.2408062Z [36;1melse[0m
+2026-03-09T18:59:41.2408360Z [36;1m  echo "Unsupported OS family: $OS_FAMILY"[0m
+2026-03-09T18:59:41.2408724Z [36;1m  exit 1[0m
+2026-03-09T18:59:41.2408983Z [36;1mfi[0m
+2026-03-09T18:59:41.2409195Z [36;1m[0m
+2026-03-09T18:59:41.2409455Z [36;1mpacker init "$TEMPLATE_FILE"[0m
+2026-03-09T18:59:41.2409766Z [36;1m[0m
+2026-03-09T18:59:41.2410002Z [36;1mpacker build \[0m
+2026-03-09T18:59:41.2410283Z [36;1m  -force \[0m
+2026-03-09T18:59:41.2410608Z [36;1m  -var "profile_id=sql2019-ws2019-standard-gen2" \[0m
+2026-03-09T18:59:41.2411009Z [36;1m  -var "location=eastus" \[0m
+2026-03-09T18:59:41.2411444Z [36;1m  -var "build_resource_group_name=RG-PACKER-IMAGE-FACTORY-EASTUS" \[0m
+2026-03-09T18:59:41.2411954Z [36;1m  -var "vm_size=Standard_D4as_v5" \[0m
+2026-03-09T18:59:41.2412420Z [36;1m  -var "managed_image_name=sql2019-ws2019-standard-gen2-22863935170" \[0m
+2026-03-09T18:59:41.2412948Z [36;1m  -var "source_image_publisher=MicrosoftSQLServer" \[0m
+2026-03-09T18:59:41.2413396Z [36;1m  -var "source_image_offer=sql2019-ws2019" \[0m
+2026-03-09T18:59:41.2413990Z [36;1m  -var "source_image_sku=standard-gen2" \[0m
+2026-03-09T18:59:41.2414383Z [36;1m  -var "source_image_version=latest" \[0m
+2026-03-09T18:59:41.2415085Z [36;1m  -var "gallery_resource_group=RG-PACKER-IMAGE-FACTORY-EASTUS" \[0m
+2026-03-09T18:59:41.2415612Z [36;1m  -var "gallery_name=acgpackerfactoryeastus" \[0m
+2026-03-09T18:59:41.2416121Z [36;1m  -var "image_definition=imgdef-sql2019-ws2019-standard-gen2" \[0m
+2026-03-09T18:59:41.2416577Z [36;1m  -var "image_version=1.0.22" \[0m
+2026-03-09T18:59:41.2416945Z [36;1m  -var "replication_regions=[\"eastus\"]" \[0m
+2026-03-09T18:59:41.2417290Z [36;1m  "${EXTRA_VARS[@]}" \[0m
+2026-03-09T18:59:41.2417640Z [36;1m  "$TEMPLATE_FILE" 2>&1 | tee packerbuild.log[0m
+2026-03-09T18:59:41.2435857Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-09T18:59:41.2436123Z env:
+2026-03-09T18:59:41.2436608Z   ARM_CLIENT_ID: ***
+2026-03-09T18:59:41.2436923Z   ARM_CLIENT_SECRET: ***
+2026-03-09T18:59:41.2437172Z   ARM_TENANT_ID: ***
+2026-03-09T18:59:41.2437399Z   ARM_SUBSCRIPTION_ID: ***
+2026-03-09T18:59:41.2437586Z ##[endgroup]
+2026-03-09T18:59:41.9285395Z [1;32mazure-arm.image: output will be in this color.[0m
+2026-03-09T18:59:41.9285818Z 
+2026-03-09T18:59:41.9293166Z [1;32m==> azure-arm.image: Running builder ...[0m
+2026-03-09T18:59:41.9304744Z [1;32m==> azure-arm.image: Creating Azure Resource Manager (ARM) client ...[0m
+2026-03-09T18:59:43.3109128Z [1;32m==> azure-arm.image: ARM Client successfully created[0m
+2026-03-09T18:59:44.3324487Z [1;32m==> azure-arm.image: Getting source image id for the deployment ...[0m
+2026-03-09T18:59:44.3326467Z [1;32m==> azure-arm.image:  -> SourceImageName: '/subscriptions/***/providers/Microsoft.Compute/locations/eastus/publishers/MicrosoftSQLServer/ArtifactTypes/vmimage/offers/sql2019-ws2019/skus/standard-gen2/versions/latest'[0m
+2026-03-09T18:59:44.5847520Z [1;32m==> azure-arm.image: Using existing resource group ...[0m
+2026-03-09T18:59:44.5852698Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T18:59:44.5856521Z [1;32m==> azure-arm.image:  -> Location          : 'eastus'[0m
+2026-03-09T18:59:44.5858636Z [1;32m==> azure-arm.image: Validating deployment template ...[0m
+2026-03-09T18:59:44.5859475Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T18:59:44.5860322Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'kvpkrdppejib0hz8d'[0m
+2026-03-09T18:59:45.6277577Z [1;32m==> azure-arm.image: Deploying deployment template ...[0m
+2026-03-09T18:59:45.6287790Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T18:59:45.6293113Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'kvpkrdppejib0hz8d'[0m
+2026-03-09T19:00:06.8717806Z [1;32m==> azure-arm.image: Getting the certificate's URL ...[0m
+2026-03-09T19:00:06.8722531Z [1;32m==> azure-arm.image:  -> Key Vault Name        : 'pkrkvpejib0hz8d'[0m
+2026-03-09T19:00:06.8723350Z [1;32m==> azure-arm.image:  -> Key Vault Secret Name : 'packerKeyVaultSecret'[0m
+2026-03-09T19:00:06.9857114Z [1;32m==> azure-arm.image:  -> Certificate URL       : 'https://pkrkvpejib0hz8d.vault.azure.net/secrets/packerKeyVaultSecret/d187d8ebfc434262b114dc10dc59500d'[0m
+2026-03-09T19:00:06.9858438Z [1;32m==> azure-arm.image: Setting the certificate's URL ...[0m
+2026-03-09T19:00:06.9859144Z [1;32m==> azure-arm.image: Validating deployment template ...[0m
+2026-03-09T19:00:06.9859960Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:00:06.9861664Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'pkrdppejib0hz8d'[0m
+2026-03-09T19:00:07.8760140Z [1;32m==> azure-arm.image: Deploying deployment template ...[0m
+2026-03-09T19:00:07.8761651Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:00:07.8763931Z [1;32m==> azure-arm.image:  -> DeploymentName    : 'pkrdppejib0hz8d'[0m
+2026-03-09T19:01:52.0504390Z [1;32m==> azure-arm.image: Getting the VM's IP address ...[0m
+2026-03-09T19:01:52.0507686Z [1;32m==> azure-arm.image:  -> ResourceGroupName   : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:01:52.0512974Z [1;32m==> azure-arm.image:  -> PublicIPAddressName : 'pkrippejib0hz8d'[0m
+2026-03-09T19:01:52.0513983Z [1;32m==> azure-arm.image:  -> NicName             : 'pkrnipejib0hz8d'[0m
+2026-03-09T19:01:52.0517487Z [1;32m==> azure-arm.image:  -> Network Connection  : 'PublicEndpoint'[0m
+2026-03-09T19:01:52.1633632Z [1;32m==> azure-arm.image:  -> IP Address          : '20.102.125.61'[0m
+2026-03-09T19:01:52.1634496Z [1;32m==> azure-arm.image: Waiting for WinRM to become available...[0m
+2026-03-09T19:02:13.0792559Z [1;32m==> azure-arm.image: WinRM connected.[0m
+2026-03-09T19:02:13.0802954Z [1;32m==> azure-arm.image: Connected to WinRM![0m
+2026-03-09T19:02:13.0827128Z [1;32m==> azure-arm.image: Provisioning with Powershell...[0m
+2026-03-09T19:02:13.0835171Z [1;32m==> azure-arm.image: Provisioning with powershell script: packer/windows/../../scripts/security-update-check-windows.ps1[0m
+2026-03-09T19:02:22.6062130Z [1;32m==> azure-arm.image: Running Security Update Check for Windows...[0m
+2026-03-09T19:02:22.6063495Z [1;32m==> azure-arm.image: No pending reboots.[0m
+2026-03-09T19:02:22.6068829Z [1;32m==> azure-arm.image: Recording update evidence...[0m
+2026-03-09T19:02:22.6071839Z [1;32m==> azure-arm.image: Security updates verified at 03/09/2026 19:02:22[0m
+2026-03-09T19:02:22.6077258Z [1;32m==> azure-arm.image: Installing Microsoft Defender for Endpoint...[0m
+2026-03-09T19:02:32.5451152Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:32.5456018Z [1;32m==> azure-arm.image: Success Restart Needed Exit Code      Feature Result[0m
+2026-03-09T19:02:32.5459525Z [1;32m==> azure-arm.image: ------- -------------- ---------      --------------[0m
+2026-03-09T19:02:32.5465313Z [1;32m==> azure-arm.image: True    No             NoChangeNeeded {}[0m
+2026-03-09T19:02:34.6678890Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:34.6683047Z [1;32m==> azure-arm.image: VERIFYING DEFENDER STATUS REPORT:[0m
+2026-03-09T19:02:34.6686268Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:35.8135502Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8141212Z [1;31m==> azure-arm.image: Start-MpScan : Errors were encountered when attempted to scan your device.[0m
+2026-03-09T19:02:35.8146745Z [1;31m==> azure-arm.image: At C:\Windows\Temp\script-69af1935-1241-57b2-83f4-f630d61a8f30.ps1:44 char:1[0m
+2026-03-09T19:02:35.8152918Z [1;31m==> azure-arm.image: + Start-MpScan -ScanType QuickScan | Out-String | Write-Host[0m
+2026-03-09T19:02:35.8160037Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8162754Z [1;32m==> azure-arm.image: AMServiceEnabled          : False[0m
+2026-03-09T19:02:35.8168674Z [1;32m==> azure-arm.image: AntispywareEnabled        : False[0m
+2026-03-09T19:02:35.8173612Z [1;32m==> azure-arm.image: AntivirusEnabled          : False[0m
+2026-03-09T19:02:35.8177575Z [1;32m==> azure-arm.image: BehaviorMonitorEnabled    : False[0m
+2026-03-09T19:02:35.8182498Z [1;32m==> azure-arm.image: RealTimeProtectionEnabled : False[0m
+2026-03-09T19:02:35.8186492Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8189852Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8195195Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8199290Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8208789Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:35.8213079Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:35.8217629Z [1;32m==> azure-arm.image: RUNNING DEFENDER QUICK SCAN:[0m
+2026-03-09T19:02:35.8223865Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:35.8224633Z [1;32m==> azure-arm.image:[0m
+2026-03-09T19:02:35.8230664Z [1;32m==> azure-arm.image: ------------------------------------------------[0m
+2026-03-09T19:02:35.8235397Z [1;32m==> azure-arm.image: Security Check and Defender Install Complete.[0m
+2026-03-09T19:02:35.8239249Z [1;31m==> azure-arm.image: + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+2026-03-09T19:02:35.8248168Z [1;31m==> azure-arm.image:     + CategoryInfo          : NotSpecified: (MSFT_MpScan:ROOT\Microsoft\...der\MSFT_MpScan) [Start-MpScan], CimExcepti[0m
+2026-03-09T19:02:35.8249126Z [1;31m==> azure-arm.image:    on[0m
+2026-03-09T19:02:35.8250853Z [1;31m==> azure-arm.image:     + FullyQualifiedErrorId : HRESULT 0x800106ba,Start-MpScan[0m
+2026-03-09T19:02:35.8253184Z [1;31m==> azure-arm.image:[0m
+2026-03-09T19:02:40.6606555Z [1;32m==> azure-arm.image: Uploading the Windows update elevated script...[0m
+2026-03-09T19:02:43.5097389Z [1;32m==> azure-arm.image: Uploading the Windows update check for reboot required elevated script...[0m
+2026-03-09T19:02:46.3665079Z [1;32m==> azure-arm.image: Uploading the Windows update script...[0m
+2026-03-09T19:02:50.1528639Z [1;32m==> azure-arm.image: Running Windows update...[0m
+2026-03-09T19:02:58.1987123Z [1;32m==> azure-arm.image: Searching for Windows updates...[0m
+2026-03-09T19:03:28.2868734Z [1;32m==> azure-arm.image: Found Windows update (2021-03-09; 3.12 MB): 2021-01 Update for Windows Server 2019 for x64-based Systems (KB4589208)[0m
+2026-03-09T19:03:28.2871302Z [1;32m==> azure-arm.image: Found Windows update (2026-02-10; 82.35 MB): Windows Malicious Software Removal Tool x64 - v5.139 (KB890830)[0m
+2026-03-09T19:03:28.2877530Z [1;32m==> azure-arm.image: Found Windows update (2026-02-10; 17537.18 MB): 2026-02 Cumulative Update for Windows Server 2019 (1809) for x64-based Systems (KB5075904)[0m
+2026-03-09T19:03:28.2884194Z [1;32m==> azure-arm.image: Downloading Windows updates (3 updates; 17622.65 MB)...[0m
+2026-03-09T19:03:54.4772566Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 16% cpu; 13% memory)...[0m
+2026-03-09T19:04:24.4929872Z [1;32m==> azure-arm.image: Installing Windows updates...[0m
+2026-03-09T19:04:55.5687600Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 0% cpu; 19% memory)...[0m
+2026-03-09T19:05:56.7131576Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 10% cpu; 15% memory)...[0m
+2026-03-09T19:06:57.8589159Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 22% cpu; 17% memory)...[0m
+2026-03-09T19:07:58.9905372Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 4% cpu; 20% memory)...[0m
+2026-03-09T19:09:00.1024312Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 1% cpu; 20% memory)...[0m
+2026-03-09T19:10:01.2080830Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 0% cpu; 21% memory)...[0m
+2026-03-09T19:11:02.3724376Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 30% cpu; 24% memory)...[0m
+2026-03-09T19:12:03.4815898Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 28% cpu; 23% memory)...[0m
+2026-03-09T19:13:04.5575930Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 44% cpu; 23% memory)...[0m
+2026-03-09T19:14:05.6709356Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 19% cpu; 24% memory)...[0m
+2026-03-09T19:15:06.8108272Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 24% cpu; 26% memory)...[0m
+2026-03-09T19:16:07.8883716Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 9% cpu; 27% memory)...[0m
+2026-03-09T19:17:09.0581371Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 21% cpu; 25% memory)...[0m
+2026-03-09T19:17:59.1363001Z [1;32m==> azure-arm.image: Windows update installation completed. Checking for more updates after a reboot...[0m
+2026-03-09T19:17:59.1368913Z [1;32m==> azure-arm.image: Waiting for the Windows Modules Installer to exit...[0m
+2026-03-09T19:18:10.1603122Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 0% cpu; 23% memory)...[0m
+2026-03-09T19:19:11.2961931Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 1% cpu; 23% memory)...[0m
+2026-03-09T19:20:11.9381089Z [1;32m==> azure-arm.image: Waiting for operation to complete (system performance: 0% cpu; 22% memory)...[0m
+2026-03-09T19:20:11.9393868Z [1;32m==> azure-arm.image: Restarting the machine...[0m
+2026-03-09T19:20:12.1867641Z [1;32m==> azure-arm.image: Waiting for machine to become available...[0m
+2026-03-09T19:20:12.3069789Z [1;31m==> azure-arm.image: A system shutdown is in progress.(1115)[0m
+2026-03-09T19:20:17.4145050Z [1;31m==> azure-arm.image: A system shutdown is in progress.(1115)[0m
+2026-03-09T19:24:31.7139528Z [1;32m==> azure-arm.image: Checking for pending restart...[0m
+2026-03-09T19:24:39.2375272Z [1;32m==> azure-arm.image: pkrvmpejib0hz8d restarted.[0m
+2026-03-09T19:24:39.2378938Z [1;32m==> azure-arm.image: Restart complete[0m
+2026-03-09T19:24:39.2379582Z [1;32m==> azure-arm.image: Running Windows update...[0m
+2026-03-09T19:24:46.9125875Z [1;32m==> azure-arm.image: Searching for Windows updates...[0m
+2026-03-09T19:24:56.4832392Z [1;32m==> azure-arm.image: No Windows updates found[0m
+2026-03-09T19:24:56.4884067Z [1;32m==> azure-arm.image: Provisioning with Powershell...[0m
+2026-03-09T19:24:56.4889561Z [1;32m==> azure-arm.image: Provisioning with powershell script: /tmp/powershell-provisioner4191891845[0m
+2026-03-09T19:25:04.4523896Z [1;32m==> azure-arm.image: Running sysprep and baseline...[0m
+2026-03-09T19:26:44.5957519Z [1;32m==> azure-arm.image: Querying the machine's properties ...[0m
+2026-03-09T19:26:44.5968862Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:26:44.5969654Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmpejib0hz8d'[0m
+2026-03-09T19:26:44.9104256Z [1;32m==> azure-arm.image:  -> Managed OS Disk   : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/disks/pkrospejib0hz8d'[0m
+2026-03-09T19:26:44.9113160Z [1;32m==> azure-arm.image: Querying the machine's additional disks properties ...[0m
+2026-03-09T19:26:44.9126078Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:26:44.9126856Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmpejib0hz8d'[0m
+2026-03-09T19:26:45.1507556Z [1;32m==> azure-arm.image: Powering off machine ...[0m
+2026-03-09T19:26:45.1509064Z [1;32m==> azure-arm.image:  -> ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:26:45.1509875Z [1;32m==> azure-arm.image:  -> ComputeName       : 'pkrvmpejib0hz8d'[0m
+2026-03-09T19:27:25.7466551Z [1;32m==> azure-arm.image:  -> Compute ResourceGroupName : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:27:25.7468088Z [1;32m==> azure-arm.image:  -> Compute Name              : 'pkrvmpejib0hz8d'[0m
+2026-03-09T19:27:25.7473573Z [1;32m==> azure-arm.image:  -> Compute Location          : 'eastus'[0m
+2026-03-09T19:27:25.7474393Z [1;32m==> azure-arm.image: Generalizing machine ...[0m
+2026-03-09T19:27:25.9565588Z [1;32m==> azure-arm.image: Capturing image ...[0m
+2026-03-09T19:27:25.9566388Z [1;32m==> azure-arm.image:  -> Image ResourceGroupName   : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:27:25.9567283Z [1;32m==> azure-arm.image:  -> Image Name                : 'sql2019-ws2019-standard-gen2-22863935170'[0m
+2026-03-09T19:27:25.9568062Z [1;32m==> azure-arm.image:  -> Image Location            : 'eastus'[0m
+2026-03-09T19:27:36.3589669Z [1;32m==> azure-arm.image: Publishing to Shared Image Gallery ...[0m
+2026-03-09T19:27:36.3592529Z [1;32m==> azure-arm.image:  -> Source ID used for SIG publish        : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170'[0m
+2026-03-09T19:27:36.3597984Z [1;32m==> azure-arm.image:  -> SIG publish resource group            : 'RG-PACKER-IMAGE-FACTORY-EASTUS'[0m
+2026-03-09T19:27:36.3599241Z [1;32m==> azure-arm.image:  -> SIG gallery name                      : 'acgpackerfactoryeastus'[0m
+2026-03-09T19:27:36.3600521Z [1;32m==> azure-arm.image:  -> SIG image name                        : 'imgdef-sql2019-ws2019-standard-gen2'[0m
+2026-03-09T19:27:36.3601302Z [1;32m==> azure-arm.image:  -> SIG image version                     : '1.0.22'[0m
+2026-03-09T19:27:36.3601970Z [1;32m==> azure-arm.image:  -> SIG target regions                    : '[eastus]'[0m
+2026-03-09T19:27:36.3602639Z [1;32m==> azure-arm.image:  -> SIG storage account type              : ''[0m
+2026-03-09T19:27:36.3603280Z [1;32m==> azure-arm.image:  -> SIG image version endoflife date      : ''[0m
+2026-03-09T19:27:36.3604082Z [1;32m==> azure-arm.image:  -> SIG image version exclude from latest : 'false'[0m
+2026-03-09T19:28:36.9801113Z [1;32m==> azure-arm.image: ERROR: -> Conflict : The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1'].
+2026-03-09T19:28:36.9813433Z ==> azure-arm.image:[0m
+2026-03-09T19:28:36.9819493Z [1;31m==> azure-arm.image: polling after CreateOrUpdate: polling failed: the Azure API returned the following error:
+2026-03-09T19:28:36.9820895Z ==> azure-arm.image: 
+2026-03-09T19:28:36.9821441Z ==> azure-arm.image: Status: "Conflict"
+2026-03-09T19:28:36.9821765Z ==> azure-arm.image: Code: ""
+2026-03-09T19:28:36.9826982Z ==> azure-arm.image: Message: "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:28:36.9834565Z ==> azure-arm.image: Activity Id: ""
+2026-03-09T19:28:36.9835041Z ==> azure-arm.image: 
+2026-03-09T19:28:36.9835354Z ==> azure-arm.image: ---
+2026-03-09T19:28:36.9836031Z ==> azure-arm.image: 
+2026-03-09T19:28:36.9836318Z ==> azure-arm.image: API Response:
+2026-03-09T19:28:36.9836761Z ==> azure-arm.image: 
+2026-03-09T19:28:36.9837075Z ==> azure-arm.image: ----[start]----
+2026-03-09T19:28:36.9837511Z ==> azure-arm.image: {
+2026-03-09T19:28:36.9837904Z ==> azure-arm.image:   "startTime": "2026-03-09T19:27:36.5661371+00:00",
+2026-03-09T19:28:36.9838566Z ==> azure-arm.image:   "endTime": "2026-03-09T19:27:36.6442609+00:00",
+2026-03-09T19:28:36.9839127Z ==> azure-arm.image:   "status": "Failed",
+2026-03-09T19:28:36.9839476Z ==> azure-arm.image:   "error": {
+2026-03-09T19:28:36.9839927Z ==> azure-arm.image:     "code": "Conflict",
+2026-03-09T19:28:36.9847116Z ==> azure-arm.image:     "message": "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:28:36.9850713Z ==> azure-arm.image:   },
+2026-03-09T19:28:36.9851134Z ==> azure-arm.image:   "name": "e844a33b-ba16-4a29-af56-bd9862cda1d0"
+2026-03-09T19:28:36.9851682Z ==> azure-arm.image: }
+2026-03-09T19:28:36.9851976Z ==> azure-arm.image: -----[end]-----
+2026-03-09T19:28:36.9852512Z ==> azure-arm.image:[0m
+2026-03-09T19:28:36.9853305Z [1;32m==> azure-arm.image: Provisioning step had errors: Running the cleanup provisioner, if present...[0m
+2026-03-09T19:28:36.9854160Z [1;32m==> azure-arm.image: 
+2026-03-09T19:28:36.9854849Z ==> azure-arm.image: Deleting Virtual Machine deployment and its attached resources...[0m
+2026-03-09T19:28:47.7905983Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Compute/virtualMachines : 'pkrvmpejib0hz8d'[0m
+2026-03-09T19:28:58.3151671Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/networkInterfaces : 'pkrnipejib0hz8d'[0m
+2026-03-09T19:29:08.6525395Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/publicIPAddresses : 'pkrippejib0hz8d'[0m
+2026-03-09T19:29:08.7890745Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/virtualNetworks : 'pkrvnpejib0hz8d'[0m
+2026-03-09T19:29:12.1614473Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Network/networkSecurityGroups : 'pkrsgpejib0hz8d'[0m
+2026-03-09T19:29:22.7926978Z [1;32m==> azure-arm.image: Deleted -> Microsoft.Compute/disks : '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/disks/pkrospejib0hz8d'[0m
+2026-03-09T19:29:22.7928420Z [1;32m==> azure-arm.image: Removing the created Deployment object: 'pkrdppejib0hz8d'[0m
+2026-03-09T19:29:33.4284898Z [1;32m==> azure-arm.image: 
+2026-03-09T19:29:33.4291425Z ==> azure-arm.image: Deleting KeyVault created during build[0m
+2026-03-09T19:29:36.1104075Z [1;32m==> azure-arm.image: Deleted -> Microsoft.KeyVault/vaults : 'pkrkvpejib0hz8d'[0m
+2026-03-09T19:29:36.1114657Z [1;32m==> azure-arm.image: Removing the created Deployment object: 'kvpkrdppejib0hz8d'[0m
+2026-03-09T19:29:46.3698860Z [1;32m==> azure-arm.image: 
+2026-03-09T19:29:46.3704087Z ==> azure-arm.image: The resource group was not created by Packer, not deleting ...[0m
+2026-03-09T19:29:46.3705403Z [1;31mBuild 'azure-arm.image' errored after 30 minutes 4 seconds: polling after CreateOrUpdate: polling failed: the Azure API returned the following error:
+2026-03-09T19:29:46.3706063Z 
+2026-03-09T19:29:46.3706166Z Status: "Conflict"
+2026-03-09T19:29:46.3706411Z Code: ""
+2026-03-09T19:29:46.3708106Z Message: "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:29:46.3709553Z Activity Id: ""
+2026-03-09T19:29:46.3709709Z 
+2026-03-09T19:29:46.3709796Z ---
+2026-03-09T19:29:46.3709924Z 
+2026-03-09T19:29:46.3710017Z API Response:
+2026-03-09T19:29:46.3710185Z 
+2026-03-09T19:29:46.3710278Z ----[start]----
+2026-03-09T19:29:46.3710515Z {
+2026-03-09T19:29:46.3711049Z   "startTime": "2026-03-09T19:27:36.5661371+00:00",
+2026-03-09T19:29:46.3711413Z   "endTime": "2026-03-09T19:27:36.6442609+00:00",
+2026-03-09T19:29:46.3711737Z   "status": "Failed",
+2026-03-09T19:29:46.3711994Z   "error": {
+2026-03-09T19:29:46.3712227Z     "code": "Conflict",
+2026-03-09T19:29:46.3714021Z     "message": "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:29:46.3715468Z   },
+2026-03-09T19:29:46.3715777Z   "name": "e844a33b-ba16-4a29-af56-bd9862cda1d0"
+2026-03-09T19:29:46.3716174Z }
+2026-03-09T19:29:46.3716385Z -----[end]-----
+2026-03-09T19:29:46.3716673Z [0m
+2026-03-09T19:29:46.3716861Z 
+2026-03-09T19:29:46.3734269Z ==> Wait completed after 30 minutes 4 seconds
+2026-03-09T19:29:46.3734639Z 
+2026-03-09T19:29:46.3734900Z ==> Some builds didn't complete successfully and had errors:
+2026-03-09T19:29:46.3735644Z --> azure-arm.image: polling after CreateOrUpdate: polling failed: the Azure API returned the following error:
+2026-03-09T19:29:46.3736215Z 
+2026-03-09T19:29:46.3736399Z Status: "Conflict"
+2026-03-09T19:29:46.3736655Z Code: ""
+2026-03-09T19:29:46.3738294Z Message: "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:29:46.3740666Z Activity Id: ""
+2026-03-09T19:29:46.3741245Z 
+2026-03-09T19:29:46.3741453Z ---
+2026-03-09T19:29:46.3741904Z 
+2026-03-09T19:29:46.3742084Z API Response:
+2026-03-09T19:29:46.3742557Z 
+2026-03-09T19:29:46.3742734Z ----[start]----
+2026-03-09T19:29:46.3743291Z {
+2026-03-09T19:29:46.3743986Z   "startTime": "2026-03-09T19:27:36.5661371+00:00",
+2026-03-09T19:29:46.3745248Z   "endTime": "2026-03-09T19:27:36.6442609+00:00",
+2026-03-09T19:29:46.3745601Z   "status": "Failed",
+2026-03-09T19:29:46.3745851Z   "error": {
+2026-03-09T19:29:46.3746085Z     "code": "Conflict",
+2026-03-09T19:29:46.3749456Z     "message": "The resource with id '/subscriptions/***/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/images/sql2019-ws2019-standard-gen2-22863935170' has a different Hypervisor generation ['V2'] than the parent gallery image Hypervisor generation ['V1']."
+2026-03-09T19:29:46.3750950Z   },
+2026-03-09T19:29:46.3751213Z   "name": "e844a33b-ba16-4a29-af56-bd9862cda1d0"
+2026-03-09T19:29:46.3751560Z }
+2026-03-09T19:29:46.3751763Z -----[end]-----
+2026-03-09T19:29:46.3751915Z 
+2026-03-09T19:29:46.3751920Z 
+2026-03-09T19:29:46.3752075Z ==> Builds finished but no artifacts were created.
+2026-03-09T19:29:46.5556300Z ##[error]Process completed with exit code 1.
+2026-03-09T19:29:46.5595856Z ##[group]Run echo "Packer Build Failed for profiles/sql2019-ws2019-standard-gen2. Extracting error tail..."
+2026-03-09T19:29:46.5596448Z [36;1mecho "Packer Build Failed for profiles/sql2019-ws2019-standard-gen2. Extracting error tail..."[0m
+2026-03-09T19:29:46.5596828Z [36;1mmkdir -p evidence/failures[0m
+2026-03-09T19:29:46.5597182Z [36;1mtail -n 50 packerbuild.log > "evidence/failures/failed-sql2019-ws2019-standard-gen2.txt"[0m
+2026-03-09T19:29:46.5611725Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-09T19:29:46.5611976Z ##[endgroup]
+2026-03-09T19:29:46.5643513Z Packer Build Failed for profiles/sql2019-ws2019-standard-gen2. Extracting error tail...
+2026-03-09T19:29:46.5686047Z ##[group]Run echo "Scanning for and deleting orphaned Packer Resource Groups..."
+2026-03-09T19:29:46.5686475Z [36;1mecho "Scanning for and deleting orphaned Packer Resource Groups..."[0m
+2026-03-09T19:29:46.5686878Z [36;1m# Match precisely the expected Packer temporary naming scheme per workflow ID[0m
+2026-03-09T19:29:46.5687349Z [36;1mSTRANDED_RGS=$(az group list --query "[?starts_with(name, 'pkr-Resource-Group-')].name" -o tsv)[0m
+2026-03-09T19:29:46.5687703Z [36;1mfor rg in $STRANDED_RGS; do[0m
+2026-03-09T19:29:46.5687967Z [36;1m  echo "Attempting cleanup on stranded Resource Group: $rg"[0m
+2026-03-09T19:29:46.5688316Z [36;1m  az group delete --name "$rg" --yes --no-wait || echo "Failed to delete $rg"[0m
+2026-03-09T19:29:46.5688599Z [36;1mdone[0m
+2026-03-09T19:29:46.5701767Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-03-09T19:29:46.5702018Z ##[endgroup]
+2026-03-09T19:29:46.5731246Z Scanning for and deleting orphaned Packer Resource Groups...
+2026-03-09T19:29:47.4934283Z ##[group]Run actions/upload-artifact@v4
+2026-03-09T19:29:47.4934528Z with:
+2026-03-09T19:29:47.4934739Z   name: global-build-errors-sql2019-ws2019-standard-gen2
+2026-03-09T19:29:47.4934994Z   path: evidence/failures/
+2026-03-09T19:29:47.4935182Z   retention-days: 7
+2026-03-09T19:29:47.4935349Z   if-no-files-found: warn
+2026-03-09T19:29:47.4935549Z   compression-level: 6
+2026-03-09T19:29:47.4935718Z   overwrite: false
+2026-03-09T19:29:47.4935888Z   include-hidden-files: false
+2026-03-09T19:29:47.4936078Z ##[endgroup]
+2026-03-09T19:29:47.6940195Z With the provided path, there will be 1 file uploaded
+2026-03-09T19:29:47.6943663Z Artifact name is valid!
+2026-03-09T19:29:47.6945326Z Root directory input is valid!
+2026-03-09T19:29:47.7595468Z Beginning upload of artifact content to blob storage
+2026-03-09T19:29:47.8344507Z Uploaded bytes 808
+2026-03-09T19:29:47.8503665Z Finished uploading artifact content to blob storage!
+2026-03-09T19:29:47.8506648Z SHA256 digest of uploaded artifact zip is 6081581bae9470133aeacbe1c124c9f625bd3635d95c4870baf192ae25ebd9b6
+2026-03-09T19:29:47.8508716Z Finalizing artifact upload
+2026-03-09T19:29:47.9519917Z Artifact global-build-errors-sql2019-ws2019-standard-gen2.zip successfully finalized. Artifact ID 5836691562
+2026-03-09T19:29:47.9521685Z Artifact global-build-errors-sql2019-ws2019-standard-gen2 has been successfully uploaded! Final size is 808 bytes. Artifact ID is 5836691562
+2026-03-09T19:29:47.9523284Z Artifact download URL: https://github.com/Derek-Coleman-Associates-Corporation/azure-packer-image-factory/actions/runs/22863935170/artifacts/5836691562
+2026-03-09T19:29:47.9639249Z Post job cleanup.
+2026-03-09T19:29:47.9958516Z Clearing azure cli accounts from the local cache.
+2026-03-09T19:29:47.9966257Z [command]/usr/bin/az account clear
+2026-03-09T19:29:48.3769185Z Post job cleanup.
+2026-03-09T19:29:48.4933554Z [command]/usr/bin/git version
+2026-03-09T19:29:48.4965708Z git version 2.34.1
+2026-03-09T19:29:48.5002469Z Temporarily overriding HOME='/home/azureuser/actions-runner/_work/_temp/539f5f7d-a5f6-4745-b4dc-db84790c8bad' before making global git config changes
+2026-03-09T19:29:48.5004553Z Adding repository directory to the temporary git global config as a safe directory
+2026-03-09T19:29:48.5007814Z [command]/usr/bin/git config --global --add safe.directory /home/azureuser/actions-runner/_work/azure-packer-image-factory/azure-packer-image-factory
+2026-03-09T19:29:48.5037953Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-03-09T19:29:48.5072861Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-03-09T19:29:48.5268436Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-03-09T19:29:48.5286892Z http.https://github.com/.extraheader
+2026-03-09T19:29:48.5297893Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-03-09T19:29:48.5324741Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-03-09T19:29:48.5537479Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-03-09T19:29:48.5566040Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-03-09T19:29:48.5893544Z Cleaning up orphan processes
