@@ -81,8 +81,30 @@ jobs:
         shell: bash
         run: |
           set -e
-          echo "We would ensure definition ${{ steps.profile.outputs.image_definition }} exists in acgpackerfactoryeastus here."
-
+          DEF_NAME="${{ steps.profile.outputs.image_definition }}"
+          RG_NAME="RG-PACKER-IMAGE-FACTORY-EASTUS"
+          GALLERY_NAME="acgpackerfactoryeastus"
+          OS_TYPE="Windows"
+          if [ "${{ steps.profile.outputs.os_family }}" == "linux" ]; then OS_TYPE="Linux"; fi
+          
+          echo "Verifying image definition: $DEF_NAME"
+          # Try to get the image definition, create if it doesn't exist
+          if ! az sig image-definition show -g "$RG_NAME" -r "$GALLERY_NAME" -i "$DEF_NAME" &>/dev/null; then
+            echo "Creating missing Image Definition $DEF_NAME in $GALLERY_NAME ($RG_NAME)..."
+            az sig image-definition create \
+              -g "$RG_NAME" \
+              -r "$GALLERY_NAME" \
+              -i "$DEF_NAME" \
+              -p "DerekColeman" \
+              -f "${{ steps.profile.outputs.offer }}" \
+              -s "${{ steps.profile.outputs.sku }}" \
+              --os-type "$OS_TYPE" \
+              --os-state Generalized \
+              --hyper-v-generation "${{ steps.profile.outputs.security_type == 'TrustedLaunchSupported' && 'V2' || 'V1' }}" \
+              --only-show-errors
+          else
+            echo "Image definition $DEF_NAME already exists."
+          fi
       - name: Packer Init and Build
         shell: bash
         env:
