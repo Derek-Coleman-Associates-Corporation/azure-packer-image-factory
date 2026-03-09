@@ -38,6 +38,7 @@ jobs:
     continue-on-error: true
     strategy:
       fail-fast: false
+      max-parallel: 12
       matrix:
         profile: ${{ fromJson(needs.discover-profiles.outputs.matrix) }}
     steps:
@@ -101,7 +102,7 @@ jobs:
               -g "$RG_NAME" \
               -r "$GALLERY_NAME" \
               -i "$DEF_NAME" \
-              -p "DerekColeman" \
+              -p "dcassociatesgroup-com" \
               -f "${{ steps.profile.outputs.source_offer }}" \
               -s "${{ steps.profile.outputs.source_sku }}" \
               --os-type "$OS_TYPE" \
