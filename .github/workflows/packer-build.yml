@@ -69,12 +69,15 @@ jobs:
 
       - name: Ensure CLI Prerequisites
         run: |
-          whoami
-          ls -la /etc/sudoers.d/ || true
-          cat /etc/sudoers.d/runner || true
           if ! command -v az &> /dev/null; then
-            echo "Installing Azure CLI..."
-            curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+            echo "Waiting for asynchronous Azure VM provisioning (CustomScript) to finish installing az..."
+            timeout 300 bash -c 'until command -v az &> /dev/null; do sleep 5; echo "Waiting..."; done'
+            if ! command -v az &> /dev/null; then
+              echo "Error: Azure CLI was not installed in time."
+              exit 1
+            fi
+            echo "Azure CLI is ready."
+            az --version
           fi
 
       - name: Setup Azure Credentials
