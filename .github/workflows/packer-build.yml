@@ -18,7 +18,7 @@ on:
       runs_on_pool:
         description: 'Runner pool to use'
         required: false
-        default: 'ubuntu-latest'
+        default: 'arc-general-runners'
         type: string
 
 permissions:

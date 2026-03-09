@@ -10,7 +10,7 @@ on:
       runs_on_pool:
         description: 'Runner pool to use'
         required: false
-        default: 'self-hosted'
+        default: 'arc-general-runners'
         type: string
 
 permissions:
@@ -34,11 +34,10 @@ jobs:
   build:
     name: Build Image ${{ matrix.profile }}
     needs: discover-profiles
-    runs-on: [self-hosted, "${{ inputs.runs_on_pool || 'self-hosted' }}", aks]
+    runs-on: ${{ inputs.runs_on_pool || 'arc-general-runners' }}
     continue-on-error: true
     strategy:
       fail-fast: false
-      max-parallel: 6
       matrix:
         profile: ${{ fromJson(needs.discover-profiles.outputs.matrix) }}
     steps:
