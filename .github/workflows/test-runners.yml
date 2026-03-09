@@ -1,0 +1,11 @@
+name: Test Runners
+on: workflow_dispatch
+jobs:
+  test-general:
+    runs-on: arc-general-runners
+    steps:
+      - run: echo "General runner online"
+  test-heavy:
+    runs-on: arc-heavy-runners
+    steps:
+      - run: echo "Heavy runner online"
