@@ -41,7 +41,6 @@ source "azure-arm" "image" {
   vm_size                           = var.vm_size
   managed_image_name                = var.managed_image_name
   managed_image_resource_group_name = var.build_resource_group_name
-  build_resource_group_name         = var.build_resource_group_name
 
   ssh_username = "azureuser"
 
