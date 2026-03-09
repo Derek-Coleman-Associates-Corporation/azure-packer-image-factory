@@ -6,7 +6,7 @@ security_type: TrustedLaunchSupported
 
 gallery:
   image_definition: imgdef-ubuntu-server-2204-minimal-gen2
-  publisher: DerekColeman
+  publisher: dcassociatesgroup-com
   offer: ubuntu-22_04-lts
   sku: ubuntu-minimal
 test:
