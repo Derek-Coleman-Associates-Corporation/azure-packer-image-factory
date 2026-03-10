@@ -9,4 +9,4 @@ gallery:
   offer: sql2019-ws2022
   sku: enterprise-gen2
 test:
-  vm_size: Standard_D4as_v5
+  vm_size: Standard_D4ads_v6
