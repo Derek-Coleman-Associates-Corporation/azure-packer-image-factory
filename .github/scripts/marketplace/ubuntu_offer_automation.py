@@ -25,8 +25,8 @@ def run_ubuntu_automation():
             return "1.0.0"
             
         mgmt_headers = {"Authorization": f"Bearer {mgmt_result['access_token']}"}
-        sub_id = "e2ba26ec-b676-47aa-ba30-f1c5c0ad0952"
-        rg = "rg-acgpackerfactory-eastus"
+        sub_id = "f4085274-4e9d-4e93-8360-67a4be900d81"
+        rg = "RG-PACKER-IMAGE-FACTORY-EASTUS"
         gallery = "acgpackerfactoryeastus"
         
         url = f"https://management.azure.com/subscriptions/{sub_id}/resourceGroups/{rg}/providers/Microsoft.Compute/galleries/{gallery}/images/{img_def_target}/versions?api-version=2024-03-03"
@@ -130,8 +130,8 @@ def run_ubuntu_automation():
             ],
             "azureComputeGalleryImageIdentities": [
                 {
-                    "subscriptionId": "e2ba26ec-b676-47aa-ba30-f1c5c0ad0952",  
-                    "resourceGroup": "rg-acgpackerfactory-eastus",
+                    "subscriptionId": "f4085274-4e9d-4e93-8360-67a4be900d81",  
+                    "resourceGroup": "RG-PACKER-IMAGE-FACTORY-EASTUS",
                     "galleryName": "acgpackerfactoryeastus",
                     "imageDefinitionName": img_def,
                     "imageVersion": get_latest_gallery_version(img_def)
