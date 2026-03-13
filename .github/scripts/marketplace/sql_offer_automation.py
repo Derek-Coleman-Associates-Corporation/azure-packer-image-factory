@@ -134,6 +134,38 @@ def main():
             }
         })
         
+        # 1.5 Offer-Level Listing (Required Support & CSP Contacts)
+        resources.append({
+            "$schema": "https://schema.mp.microsoft.com/schema/listing/2022-03-01-preview3",
+            "id": f"listing/{product_id}/public/main/default/en-us",
+            "product": f"product/{product_id}",
+            "kind": "azureVM",
+            "languageId": "en-us",
+            "title": product_data['name'],
+            "description": f"<p>Deploy {product_data['name']} natively integrated with Azure Update Manager for Enterprise Scale workflows.</p>",
+            "searchResultSummary": f"High-performance {product_data['name']} offering.",
+            "shortDescription": f"Enterprise optimized {product_data['name']} environments.",
+            "privacyPolicyLink": "https://www.dcassociatesgroup.com/privacy",
+            "globalSupportWebsite": "https://www.dcassociatesgroup.com",
+            "cloudSolutionProviderMarketingMaterials": "https://www.dcassociatesgroup.com",
+            "supportContact": {
+                "name": "Support Team",
+                "email": "support@dcassociatesgroup.com",
+                "phone": "18564484318"
+            },
+            "engineeringContact": {
+                "name": "Engineering Team",
+                "email": "support@dcassociatesgroup.com",
+                "phone": "18564484318"
+            },
+            "cloudSolutionProviderContact": {
+                "name": "CSP Team",
+                "email": "support@dcassociatesgroup.com",
+                "phone": "18564484318"
+            }
+        })
+
+        
         # 2. Plan Minting Loop
         for plan_obj in product_data['plans']:
             p_id = plan_obj['id']
@@ -188,17 +220,20 @@ def main():
                 "id": f"virtual-machine-plan-technical-configuration/{product_id}/{p_id}",
                 "product": f"product/{product_id}",
                 "plan": f"plan/{product_id}/{p_id}",
-                "operatingSystemFamily": "Windows",
-                "generation": "gen2",
-                "state": "generalized",
-                "securityType": "TrustedLaunch",
-                "supportsAcceleratedNetworking": True,
-                "supportsCloudInitConfiguration": False,
-                "supportsVmExtensions": True,
-                "supportsBackup": True,
-                "supportsMicrosoftEntraIdentityAuthentication": True,
-                "isNetworkVirtualAppliance": False,
-                "recommendedSizes": [
+                "operatingSystem": {
+                    "family": "windows",
+                    "type": "windowsServer2022",
+                    "friendlyName": "Windows Server 2025"
+                },
+                "vmProperties": {
+                    "supportsAcceleratedNetworking": True,
+                    "supportsCloudInit": False,
+                    "supportsExtensions": True,
+                    "supportsBackup": True,
+                    "supportsAadLogin": True,
+                    "isNetworkVirtualAppliance": False
+                },
+                "recommendedVmSizes": [
                     "Standard_D8s_v5",
                     "Standard_D16s_v5",
                     "Standard_E8s_v5",
@@ -206,13 +241,21 @@ def main():
                     "Standard_M8ms",
                     "Standard_M16ms"
                 ],
-                "azureComputeGalleryImageIdentities": [
+                "vmImageVersions": [
                     {
-                        "subscriptionId": "f4085274-4e9d-4e93-8360-67a4be900d81",  
-                        "resourceGroup": "RG-PACKER-IMAGE-FACTORY-EASTUS",
-                        "galleryName": "acgpackerfactoryeastus",
-                        "imageDefinitionName": img_def,
-                        "imageVersion": get_latest_gallery_version(img_def)
+                        "versionNumber": get_latest_gallery_version(img_def),
+                        "vmImages": [
+                            {
+                                "imageType": "x64Gen2",
+                                "source": {
+                                    "sourceType": "sharedImageGallery",
+                                    "sharedImage": {
+                                        "tenantId": tenant_id,
+                                        "resourceId": f"/subscriptions/f4085274-4e9d-4e93-8360-67a4be900d81/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/galleries/acgpackerfactoryeastus/images/{img_def}/versions/{get_latest_gallery_version(img_def)}"
+                                    }
+                                }
+                            }
+                        ]
                     }
                 ]
             })
