@@ -57,7 +57,7 @@ def main():
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     
     sql_products = {
-        "sql-server-2025-gen2": {
+        "ef2bf7b5-7d67-4ac8-912f-395d3f41b531": {
             "name": "SQL Server 2025",
             "plans": [
                 {
@@ -127,8 +127,11 @@ def main():
         resources.append({
             "$schema": "https://schema.mp.microsoft.com/schema/product/2022-03-01-preview3",
             "id": f"product/{product_id}",
-            "name": product_data['name'],
-            "kind": "azureVM"
+            "alias": product_data['name'],
+            "type": "azureVirtualMachine",
+            "identity": {
+                "externalId": product_id
+            }
         })
         
         # 2. Plan Minting Loop
@@ -144,7 +147,10 @@ def main():
                 "$schema": "https://schema.mp.microsoft.com/schema/plan/2022-03-01-preview2",
                 "id": f"plan/{product_id}/{p_id}",
                 "product": f"product/{product_id}",
-                "name": p_title
+                "alias": p_title,
+                "identity": {
+                    "externalId": p_id
+                }
             })
             
             # EXACT Plan Listing SEO configuration mapping directly to Memory store
@@ -160,6 +166,22 @@ def main():
                 "description": p_desc
             })
             
+            # Plan Pricing and Availability (Market Rules and vCPU Overrides)
+            resources.append({
+                "$schema": "https://schema.mp.microsoft.com/schema/price-and-availability-plan/2022-03-01-preview3",
+                "id": f"price-and-availability-plan/{product_id}/{p_id}",
+                "product": f"product/{product_id}",
+                "plan": f"plan/{product_id}/{p_id}",
+                "pricingModel": "PerCore",
+                "price": {
+                    "currencyCode": "USD",
+                    "value": 0.09
+                },
+                "visibility": "visible",
+                "audience": "public",
+                "customerMarkets": "allMarkets"
+            })
+            
             # Hardware & Image Technical Configuration
             resources.append({
                 "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview2",
@@ -167,7 +189,6 @@ def main():
                 "product": f"product/{product_id}",
                 "plan": f"plan/{product_id}/{p_id}",
                 "operatingSystemFamily": "Windows",
-                "operatingSystem": "Windows", 
                 "generation": "gen2",
                 "state": "generalized",
                 "securityType": "TrustedLaunch",
