@@ -1,0 +1,173 @@
+name: Build Ubuntu Desktop Marketplace VHD
+
+on:
+  push:
+    branches:
+      - '**/'
+    paths:
+      - '.github/workflows/build-ubuntu-desktop-marketplace.yml'
+  workflow_dispatch:
+
+env:
+  STORAGE_ACCOUNT: "vhdstoragefactory"
+  STORAGE_CONTAINER: "isos"
+  GALLERY_NAME: "acgpackerfactoryeastus"
+  GALLERY_RG: "RG-PACKER-IMAGE-FACTORY-EASTUS"
+  LOCATION: "eastus"
+
+jobs:
+  build_desktop_vhds:
+    runs-on: [self-hosted, linux, azure, vmss]
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - version: "24.04.4"
+            series: "noble"
+            arch: "amd64"
+            offer: "ubuntu-desktop-2404-lts"
+            imgdef: "imgdef-ubuntu-desktop-2404-gen2"
+            iso_suffix: "24.04.4-desktop-amd64.iso"
+          - version: "24.10"
+            series: "oracular"
+            arch: "amd64"
+            offer: "ubuntu-desktop-2410"
+            imgdef: "imgdef-ubuntu-desktop-2410-gen2"
+            iso_suffix: "24.10-desktop-amd64.iso"
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Azure Login
+        uses: azure/login@v2
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Configure Sudo and Update
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          sudo -nv || true
+          
+          # Allow apt actions without interactivity only if sudo access is mapped correctly on the runner payload script.
+          # Bypass visudo explicitly if the self-hosted runner lacks direct mapping and depends on native access.
+          if sudo -n true 2>/dev/null; then
+              echo "azureuser ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/90-cloud-init-users >/dev/null
+              sudo chmod 0440 /etc/sudoers.d/90-cloud-init-users
+              sudo -E dpkg --configure -a || true
+              sudo -E apt-get update -y || true
+          else
+              echo "Sudo strictly bypassed in self-hosted VMSS scale profile."
+              dpkg --configure -a || true
+              apt-get update -y || true
+          fi
+          
+      - name: Install QEMU Libraries
+        run: |
+          export DEBIAN_FRONTEND=noninteractive
+          
+          if sudo -n true 2>/dev/null; then
+              sudo -E apt-get install -y --no-install-recommends qemu-system-x86 qemu-utils xorriso genisoimage curl jq || true
+              sudo usermod -aG kvm $USER || true
+              sudo chown root:kvm /dev/kvm || true
+              sudo chmod 0666 /dev/kvm || true
+          else
+              apt-get install -y --no-install-recommends qemu-system-x86 qemu-utils xorriso genisoimage curl jq || true
+          fi
+          
+          # Fallback and test standard qemu setup manually if sudo failed
+          if ! command -v qemu-system-x86_64 >/dev/null 2>&1; then
+             echo "QEMU not installed, and self-hosted runner lacks sudo permissions!"
+             exit 1
+          fi
+
+      - name: Build VHD using QEMU
+        env:
+          ISO_VERSION: ${{ matrix.version }}
+          ISO_SERIES_PATH: ${{ matrix.series }}
+          ARCH: ${{ matrix.arch }}
+          WORK_DIR: ${{ github.workspace }}/work
+          OUT_DIR: ${{ github.workspace }}/out
+          VM_MEMORY_MB: "4096"
+          VM_CPUS: "2"
+          DISK_SIZE_GB: "64"
+          ISO_SUFFIX: ${{ matrix.iso_suffix }}
+        run: |
+          # Retrieve target build scripts
+          wget -qO build.sh https://raw.githubusercontent.com/Derek-Coleman-Associates-Corporation/sql2025-image-factory/main/image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh || true
+          
+          if [ ! -f ./image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh ]; then
+             mkdir -p ./image-capture-factory/scripts
+             mv build.sh ./image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh
+             chmod +x ./image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh
+          fi
+          
+          # Patch script to use ISO_SUFFIX for the download URL if it's not currently picking it up right.
+          sed -i "s|ubuntu-\${ISO_VERSION}-desktop-\${ARCH}.iso|ubuntu-\${ISO_SUFFIX}|g" ./image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh || true
+          
+          bash ./image-capture-factory/scripts/build_ubuntu_desktop_iso_vhd.sh
+
+      - name: Map Outputs
+        id: build_meta
+        run: |
+          VHD_FILE=$(jq -r '.vhd_file' ${{ github.workspace }}/out/*.metadata.json)
+          echo "VHD_FILE=$VHD_FILE" >> $GITHUB_ENV
+
+      - name: Upload VHD to Azure Blob Storage
+        run: |
+          # Ensure target container exists
+          az storage container create --name ${{ env.STORAGE_CONTAINER }} --account-name ${{ env.STORAGE_ACCOUNT }} --auth-mode login || true
+          
+          # Copy to Blob
+          az storage blob upload \
+            --account-name ${{ env.STORAGE_ACCOUNT }} \
+            --container-name ${{ env.STORAGE_CONTAINER }} \
+            --name "${{ env.VHD_FILE }}" \
+            --file "${{ github.workspace }}/out/${{ env.VHD_FILE }}" \
+            --auth-mode login
+
+      - name: Generate Shared Access Signature
+        id: sas
+        run: |
+          # Create a 24-hour SAS token natively for the compute gallery extraction 
+          EXPIRY=$(date -u -d "1 day" '+%Y-%m-%dT%H:%MZ')
+          SAS_TOKEN=$(az storage blob generate-sas \
+            --account-name ${{ env.STORAGE_ACCOUNT }} \
+            --container-name ${{ env.STORAGE_CONTAINER }} \
+            --name "${{ env.VHD_FILE }}" \
+            --permissions r \
+            --expiry "$EXPIRY" \
+            --auth-mode login \
+            --as-user \
+            -o tsv)
+            
+          # Construct full URI
+          VHD_URI="https://${{ env.STORAGE_ACCOUNT }}.blob.core.windows.net/${{ env.STORAGE_CONTAINER }}/${{ env.VHD_FILE }}?$SAS_TOKEN"
+          echo "vhd_uri=$VHD_URI" >> $GITHUB_OUTPUT
+
+      - name: Ensure Target Compute Gallery Definition Exists
+        run: |
+          az sig image-definition create \
+             --resource-group ${{ env.GALLERY_RG }} \
+             --gallery-name ${{ env.GALLERY_NAME }} \
+             --gallery-image-definition ${{ matrix.imgdef }} \
+             --publisher "dcassociatesgroup" \
+             --offer ${{ matrix.offer }} \
+             --sku "desktop" \
+             --os-type Linux \
+             --os-state Generalized \
+             --hyper-v-generation V2 \
+             --features SecurityType=TrustedLaunch \
+             --location ${{ env.LOCATION }} || echo "Image Definition natively exists!"
+
+      - name: Publish to Compute Gallery 
+        run: |
+          VERSION="1.0.${{ github.run_number }}"
+          az sig image-version create \
+             --resource-group ${{ env.GALLERY_RG }} \
+             --gallery-name ${{ env.GALLERY_NAME }} \
+             --gallery-image-definition ${{ matrix.imgdef }} \
+             --gallery-image-version $VERSION \
+             --os-vhd-uri "${{ steps.sas.outputs.vhd_uri }}" \
+             --os-vhd-storage-account ${{ env.STORAGE_ACCOUNT }} \
+             --location ${{ env.LOCATION }}

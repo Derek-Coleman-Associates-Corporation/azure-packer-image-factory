@@ -58,37 +58,57 @@ def run_ubuntu_automation():
     
     ubuntu_products = {
         "ubuntu-server-gen2": {
-            "name": "Ubuntu Server",
+            "name": "Ubuntu Enterprise (Server & Desktop)",
+            "logo_path": ".agents/workflows/ubuntu-logo.png",
             "plans": [
                 {
-                    "id": "plan-ubuntu-2404",
-                    "title": "Ubuntu Server 24.04 LTS (Noble Numbat)",
-                    "summary": "The latest Canonical Ubuntu 24.04 LTS built aggressively for cutting-edge enterprise scaling and containerization.",
-                    "description": "<p>Optimize modern infrastructure atop Ubuntu Server 24.04 LTS. Hardened, rigorously tested, and equipped with the newest Linux kernel enhancements to drive flawless performance across Azure hybrid architectures. Includes an unmodified Canonical base image optimized strictly for maximum throughput and native cloud-init customization.</p>"
+                    "id": "ubuntu-2404-lts",
+                    "img_def": "imgdef-ubuntu-desktop-2404-gen2",
+                    "title": "Ubuntu Desktop 24.04.4 LTS",
+                    "summary": "Canonical Ubuntu Desktop 24.04.4 LTS natively optimized for Azure Virtual Desktop.",
+                    "description": "<p>Deliver resilient GUI-based developer desktops utilizing Canonical Ubuntu 24.04.4 LTS. Provides a hardened foundation equipped with optimized GPU drivers tested for desktop stability.</p>"
                 },
                 {
-                    "id": "plan-ubuntu-2404-minimal",
-                    "title": "Ubuntu Server 24.04 LTS Minimal",
-                    "summary": "A highly-compressed, streamlined Canonical Ubuntu 24.04 LTS environment offering strict security posturing.",
-                    "description": "<p>Engineered to reduce architectural attack surfaces, the Minimal deployment of Ubuntu 24.04 LTS strips out unnecessary binaries to maximize compute efficiency and reduce boot times. Intentionally positioned as a scalable Docker/Kubernetes container host and microservice backend.</p>"
+                    "id": "ubuntu-2510",
+                    "img_def": "imgdef-ubuntu-desktop-2410-gen2",
+                    "title": "Ubuntu Desktop 25.10",
+                    "summary": "The latest Canonical Ubuntu Desktop 25.10 release with advanced UI and developer tooling.",
+                    "description": "<p>Deploy an incredibly fast iteration of Canonical Ubuntu Desktop 25.10 for cutting-edge development workflows.</p>"
                 },
                 {
-                    "id": "plan-ubuntu-2204",
-                    "title": "Ubuntu Server 22.04 LTS (Jammy Jellyfish)",
-                    "summary": "The industry-leading, universally compliant Ubuntu Server 22.04 LTS tailored for production stability.",
-                    "description": "<p>Deliver resilient and highly predictable runtime execution utilizing Canonical Ubuntu Server 22.04 LTS. Provides a hardened, trusted foundation equipped with highly-optimized network drivers natively tested for extreme stability across the Azure ecosystem.</p>"
+                    "id": "ubuntu-server-2404",
+                    "img_def": "imgdef-ubuntu-server-2404-gen2",
+                    "title": "Ubuntu Server 24.04 LTS",
+                    "summary": "Canonical Ubuntu 24.04 LTS built aggressively for cutting-edge enterprise scaling.",
+                    "description": "<p>Optimize modern infrastructure atop Ubuntu Server 24.04 LTS. Hardened and equipped with the newest Linux kernels.</p>"
                 },
                 {
-                    "id": "plan-ubuntu-2204-minimal",
-                    "title": "Ubuntu Server 22.04 LTS Minimal",
-                    "summary": "Streamlined Canonical Ubuntu Server 22.04 LTS designed for lightweight cloud execution and rapid scaling.",
-                    "description": "<p>Deploy an incredibly fast, highly optimized iteration of Canonical Ubuntu natively stripped of bulk packages. The 22.04 LTS Minimal Gen2 foundation offers reduced memory footprint, lowering compute costs while maintaining peak enterprise compatibility and stability.</p>"
+                    "id": "ubuntu-server-2204",
+                    "img_def": "imgdef-ubuntu-server-2204-gen2",
+                    "title": "Ubuntu Server 22.04 LTS",
+                    "summary": "Canonical Ubuntu Server 22.04 LTS tailored for strict production stability.",
+                    "description": "<p>Deliver resilient backend systems utilizing Canonical Ubuntu Server 22.04 LTS.</p>"
                 },
                 {
-                    "id": "plan-ubuntu-2004",
-                    "title": "Ubuntu Server 20.04 LTS (Focal Fossa)",
-                    "summary": "Legacy Canonical Ubuntu Server 20.04 LTS ensuring maximum architectural backward compatibility and prolonged support frameworks.",
-                    "description": "<p>Ensure long-term operability of aging applications lacking modern runtime upgrades with Canonical Ubuntu Server 20.04 LTS. This production-tested foundational OS maintains rigorous security pipelines natively backed by Canonical, minimizing migration friction for established environments.</p>"
+                    "id": "ubuntu-server-2004",
+                    "img_def": "imgdef-ubuntu-server-2004-gen2",
+                    "title": "Ubuntu Server 20.04 LTS",
+                    "summary": "Legacy Canonical Ubuntu Server 20.04 LTS for architectural backward compatibility.",
+                    "description": "<p>Ensure long-term operability of aging applications with Canonical Ubuntu Server 20.04 LTS.</p>"
+                },
+                {
+                    "id": "ubuntu-desktop-2204",
+                    "img_def": "imgdef-ubuntu-desktop-2204-gen2",
+                    "title": "Ubuntu Desktop 22.04 LTS",
+                    "summary": "Canonical Ubuntu Desktop 22.04 LTS designed for remote access protocols.",
+                    "description": "<p>Deploy a stable, heavily supported GUI environment with Ubuntu Desktop 22.04 LTS.</p>"
+                },
+                {
+                    "id": "ubuntu-desktop-2004",
+                    "img_def": "imgdef-ubuntu-desktop-2004-gen2",
+                    "title": "Ubuntu Desktop 20.04 LTS",
+                    "summary": "Canonical Ubuntu Desktop 20.04 LTS for legacy X11 compatibility workflows.",
+                    "description": "<p>Provides a hardened, historically trusted X11 foundation for legacy UI testing atop Ubuntu Desktop 20.04 LTS.</p>"
                 }
             ]
         }
@@ -107,6 +127,20 @@ def run_ubuntu_automation():
             "kind": "azureVM"
         })
         
+        # 1.5 Preview Audience Configurations (Offer-Level Testers)
+        resources.append({
+            "$schema": "https://schema.mp.microsoft.com/schema/price-and-availability-offer/2022-03-01-preview3",
+            "id": f"price-and-availability-offer/{product_id}",
+            "product": f"product/{product_id}",
+            "previewAudiences": [
+                {
+                    "type": "subscription",
+                    "id": "48fe169a-1451-4f57-8487-96a81f41e539",
+                    "label": "Testers"
+                }
+            ]
+        })
+
         # 2. Plan Minting Loop
         for plan_obj in product_data['plans']:
             p_id = plan_obj['id']
@@ -134,9 +168,27 @@ def run_ubuntu_automation():
                 "summary": p_summary,
                 "description": p_desc
             })
+
+            # Plan Pricing and Availability (Enforcing $0.09 perCore universally)
+            resources.append({
+                "$schema": "https://schema.mp.microsoft.com/schema/price-and-availability-plan/2022-03-01-preview3",
+                "id": f"price-and-availability-plan/{product_id}/{p_id}",
+                "product": f"product/{product_id}",
+                "plan": f"plan/{product_id}/{p_id}",
+                "pricing": {
+                    "licenseModel": "payAsYouGo",
+                    "corePricing": {
+                        "priceInputOption": "perCore",
+                        "pricePerCore": 0.09
+                    }
+                },
+                "visibility": "visible",
+                "audience": "public",
+                "customerMarkets": "allMarkets"
+            })
             
             # Hardware & Image Technical Configuration
-            img_def = p_id.replace("plan-ubuntu", "imgdef-ubuntu-server") + "-gen2"
+            img_def = plan_obj.get("img_def", f"imgdef-ubuntu-{p_id}-gen2")
             resources.append({
                 "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview2",
                 "id": f"virtual-machine-plan-technical-configuration/{product_id}/{p_id}",
