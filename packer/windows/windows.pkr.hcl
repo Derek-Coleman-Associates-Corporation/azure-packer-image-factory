@@ -33,6 +33,9 @@ variable "gallery_name" { type = string }
 variable "image_definition" { type = string }
 variable "image_version" { type = string }
 variable "replication_regions" { type = list(string) }
+variable "plan_info_publisher" { type = string }
+variable "plan_info_product" { type = string }
+variable "plan_info_name" { type = string }
 
 variable "azure_tags" {
   type    = map(string)
@@ -69,6 +72,12 @@ source "azure-arm" "image" {
     image_name          = var.image_definition
     image_version       = var.image_version
     replication_regions = var.replication_regions
+  }
+
+  plan_info {
+    plan_name      = var.plan_info_name
+    plan_product   = var.plan_info_product
+    plan_publisher = var.plan_info_publisher
   }
 }
 
