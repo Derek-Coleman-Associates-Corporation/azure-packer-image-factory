@@ -18,10 +18,7 @@ variable "temp_resource_group_name" {
   type    = string
   default = ""
 }
-variable "vm_admin_password" {
-  type      = string
-  sensitive = true
-}
+
 variable "vm_size" { type = string }
 variable "managed_image_name" { type = string }
 variable "source_image_publisher" { type = string }
