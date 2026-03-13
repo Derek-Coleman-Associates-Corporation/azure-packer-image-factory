@@ -62,84 +62,108 @@ def run_rhel_automation():
     token = result["access_token"]
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     
-    # --- RHEL MAPPING TOPOLOGY ---
-    product_alias = "rhel-server-gen2"
-    
-    rhel_plans = [
-        ("plan-rhel-810", "Red Hat Enterprise Linux 8.10"),
-        ("plan-rhel-93", "Red Hat Enterprise Linux 9.3"),
-        ("plan-rhel-94", "Red Hat Enterprise Linux 9.4")
-    ]
+    rhel_products = {
+        "rhel-server-gen2": {
+            "name": "Red Hat Enterprise Linux (RHEL)",
+            "plans": [
+                {
+                    "id": "plan-rhel-94",
+                    "title": "Red Hat Enterprise Linux 9.4 (Gen2)",
+                    "summary": "The newest iteration of the ultimate open-source enterprise operating system deployment.",
+                    "description": "<p>Maximize hybrid cloud success with the unparalleled performance and security of RHEL 9.4. Natively configured to capitalize on Azure's newest Gen2 hypervisor specifications, this image delivers extensive application stream coverage, native compliance frameworks, and proactive defense paradigms.</p>"
+                },
+                {
+                    "id": "plan-rhel-93",
+                    "title": "Red Hat Enterprise Linux 9.3 (Gen2)",
+                    "summary": "Highly resilient RHEL 9.3 runtime execution optimized strictly for mission-critical Gen2 throughput.",
+                    "description": "<p>Deploy sophisticated, compliance-driven enterprise applications securely with Red Hat Enterprise Linux 9.3. Engineered to support massive-scale Linux execution across hybrid infrastructure footprints.</p>"
+                },
+                {
+                    "id": "plan-rhel-810",
+                    "title": "Red Hat Enterprise Linux 8.10 (Gen2)",
+                    "summary": "RHEL 8.10, optimized for legacy enterprise compatibility, strict regulatory workflows, and predictable execution.",
+                    "description": "<p>Ensuring total application stability and deeply-vetted security profiles, Red Hat Enterprise Linux 8.10 offers continuous enterprise-grade compute. Ideal for strict production architectures requiring proven dependency tracking and rigid, scalable lifecycle administration across Azure topologies.</p>"
+                }
+            ]
+        }
+    }
     
     resources = []
     
-    # 1. Product (Offer) Creation Shell
-    resources.append({
-        "$schema": "https://schema.mp.microsoft.com/schema/product/2022-03-01-preview3",
-        "id": f"product/{product_alias}",
-        "name": "Red Hat Enterprise Linux (RHEL)",
-        "kind": "azureVM"
-    })
-    
-    # 2. Plan Minting Loop
-    for p_id, p_name in rhel_plans:
+    for product_id, product_data in rhel_products.items():
+        print(f"Synthesizing Configuration Payload for {product_data['name']} ({product_id})...")
+        
+        # 1. Product (Offer) Creation Shell
         resources.append({
-            "$schema": "https://schema.mp.microsoft.com/schema/plan/2022-03-01-preview2",
-            "id": f"plan/{product_alias}/{p_id}",
-            "product": f"product/{product_alias}",
-            "name": p_name
+            "$schema": "https://schema.mp.microsoft.com/schema/product/2022-03-01-preview3",
+            "id": f"product/{product_id}",
+            "name": product_data['name'],
+            "kind": "azureVM"
         })
         
-        resources.append({
-            "$schema": "https://schema.mp.microsoft.com/schema/plan-listing/2022-03-01-preview3",
-            "id": f"plan-listing/{product_alias}/public/main/{p_id}/en-us",
-            "product": f"product/{product_alias}",
-            "plan": f"plan/{product_alias}/{p_id}",
-            "kind": "azureVM-plan",
-            "languageId": "en-us",
-            "name": p_name,
-            "summary": p_name,
-            "description": f"<h2>{p_name}</h2><p>Experience enterprise-grade security and reliability with {p_name}. Designed for the modern hybrid cloud, natively mapped for Azure Gen2 hypervisor deployment parameters.</p>"
-        })
-        
-        # Hardware & Image Technical Configuration
-        # Dynamically map the p_id alias back to the Packer target (e.g. 'plan-rhel-810' -> 'imgdef-rhel-810-gen2')
-        img_def = p_id.replace("plan-rhel-", "imgdef-rhel-") + "-gen2"
-        resources.append({
-            "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview2",
-            "id": f"virtual-machine-plan-technical-configuration/{product_alias}/{p_id}",
-            "product": f"product/{product_alias}",
-            "plan": f"plan/{product_alias}/{p_id}",
-            "operatingSystemFamily": "Linux",
-            "operatingSystem": "Other", 
-            "generation": "gen2",
-            "state": "generalized",
-            "securityType": "TrustedLaunch",
-            "supportsAcceleratedNetworking": True,
-            "supportsCloudInitConfiguration": True,
-            "supportsVmExtensions": True,
-            "supportsBackup": True,
-            "supportsMicrosoftEntraIdentityAuthentication": True,
-            "isNetworkVirtualAppliance": False,
-            "recommendedSizes": [
-                "Standard_D2s_v5",
-                "Standard_D4s_v5",
-                "Standard_D8s_v5",
-                "Standard_E2s_v5",
-                "Standard_E4s_v5",
-                "Standard_E8s_v5"
-            ],
-            "azureComputeGalleryImageIdentities": [
-                {
-                    "subscriptionId": "f4085274-4e9d-4e93-8360-67a4be900d81",  
-                    "resourceGroup": "RG-PACKER-IMAGE-FACTORY-EASTUS",
-                    "galleryName": "acgpackerfactoryeastus",
-                    "imageDefinitionName": img_def,
-                    "imageVersion": get_latest_gallery_version(img_def)
-                }
-            ]
-        })
-        
+        # 2. Plan Minting Loop
+        for plan_obj in product_data['plans']:
+            p_id = plan_obj['id']
+            p_title = plan_obj['title']
+            p_summary = plan_obj['summary']
+            p_desc = plan_obj['description']
+            
+            resources.append({
+                "$schema": "https://schema.mp.microsoft.com/schema/plan/2022-03-01-preview2",
+                "id": f"plan/{product_id}/{p_id}",
+                "product": f"product/{product_id}",
+                "name": p_title
+            })
+            
+            resources.append({
+                "$schema": "https://schema.mp.microsoft.com/schema/plan-listing/2022-03-01-preview3",
+                "id": f"plan-listing/{product_id}/public/main/{p_id}/en-us",
+                "product": f"product/{product_id}",
+                "plan": f"plan/{product_id}/{p_id}",
+                "kind": "azureVM-plan",
+                "languageId": "en-us",
+                "name": p_title,
+                "summary": p_summary,
+                "description": p_desc
+            })
+            
+            # Hardware & Image Technical Configuration
+            img_def = p_id.replace("plan-rhel-", "imgdef-rhel-") + "-gen2"
+            resources.append({
+                "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview2",
+                "id": f"virtual-machine-plan-technical-configuration/{product_id}/{p_id}",
+                "product": f"product/{product_id}",
+                "plan": f"plan/{product_id}/{p_id}",
+                "operatingSystemFamily": "Linux",
+                "operatingSystem": "Other", 
+                "generation": "gen2",
+                "state": "generalized",
+                "securityType": "TrustedLaunch",
+                "supportsAcceleratedNetworking": True,
+                "supportsCloudInitConfiguration": True,
+                "supportsVmExtensions": True,
+                "supportsBackup": True,
+                "supportsMicrosoftEntraIdentityAuthentication": True,
+                "isNetworkVirtualAppliance": False,
+                "recommendedSizes": [
+                    "Standard_D2s_v5",
+                    "Standard_D4s_v5",
+                    "Standard_D8s_v5",
+                    "Standard_E2s_v5",
+                    "Standard_E4s_v5",
+                    "Standard_E8s_v5"
+                ],
+                "azureComputeGalleryImageIdentities": [
+                    {
+                        "subscriptionId": "f4085274-4e9d-4e93-8360-67a4be900d81",  
+                        "resourceGroup": "RG-PACKER-IMAGE-FACTORY-EASTUS",
+                        "galleryName": "acgpackerfactoryeastus",
+                        "imageDefinitionName": img_def,
+                        "imageVersion": get_latest_gallery_version(img_def)
+                    }
+                ]
+            })
+            
     payload = {
         "$schema": "https://schema.mp.microsoft.com/schema/configure/2022-03-01-preview2",
         "resources": resources
@@ -147,7 +171,7 @@ def run_rhel_automation():
     
     cfg_url = "https://graph.microsoft.com/rp/product-ingestion/configure?api-version=2022-03-01-preview2"
     
-    print(f"\nExecuting POST /configure to mint '{product_alias}' and {len(rhel_plans)} Internal Plans...")
+    print(f"\nExecuting POST /configure to mint ALL Red Hat Topologies and Nested Plans...")
     try:
         r = requests.post(cfg_url, headers=headers, json=payload, timeout=30)
         print(f"HTTP Return Code: {r.status_code}")
