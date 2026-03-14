@@ -112,7 +112,7 @@ jobs:
           if [ "${{ steps.profile.outputs.os_family }}" == "linux" ]; then OS_TYPE="Linux"; fi
           
           HV_GEN="V1"
-          if [[ "${{ steps.profile.outputs.source_sku }}" == *"gen2"* ]]; then
+          if [[ "${{ steps.profile.outputs.source_sku }}" == *"gen2"* ]] || [[ "${{ steps.profile.outputs.source_sku }}" == *"-g2"* ]] || [[ "${{ steps.profile.outputs.profile_id }}" == *"-gen2"* ]]; then
             HV_GEN="V2"
           fi
           
