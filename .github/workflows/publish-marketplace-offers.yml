@@ -11,6 +11,8 @@ on:
           - ubuntu-server
           - rhel-server
           - sql-server
+          - windows10-desktop
+          - windows11-desktop
 
 jobs:
   Deploy_Marketplace_Metadata:
@@ -48,3 +50,11 @@ jobs:
       - name: Deploy SQL Server 2025 Pipeline
         if: ${{ github.event.inputs.target_offer == 'sql-server' }}
         run: python .github/scripts/marketplace/sql_offer_automation.py
+
+      - name: Deploy Windows 10 First-Party Topology
+        if: ${{ github.event.inputs.target_offer == 'windows10-desktop' }}
+        run: python .github/scripts/marketplace/windows10_offer_automation.py
+
+      - name: Deploy Windows 11 First-Party Topology
+        if: ${{ github.event.inputs.target_offer == 'windows11-desktop' }}
+        run: python .github/scripts/marketplace/windows11_offer_automation.py
