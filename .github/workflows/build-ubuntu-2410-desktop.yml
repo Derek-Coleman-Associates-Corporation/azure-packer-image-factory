@@ -1,11 +1,11 @@
-name: Build Ubuntu Desktop Marketplace VHD
+name: Build Ubuntu 24.10 Desktop
 
 on:
   push:
     branches:
       - '**/'
     paths:
-      - '.github/workflows/build-ubuntu-desktop-marketplace.yml'
+      - '.github/workflows/build-ubuntu-2410-desktop.yml'
   workflow_dispatch:
 
 env:
@@ -14,26 +14,16 @@ env:
   GALLERY_NAME: "acgpackerfactoryeastus"
   GALLERY_RG: "RG-PACKER-IMAGE-FACTORY-EASTUS"
   LOCATION: "eastus"
+  ISO_VERSION: "24.10"
+  ISO_SERIES_PATH: "oracular"
+  ARCH: "amd64"
+  OFFER: "ubuntu-desktop-2410"
+  IMGDEF: "imgdef-ubuntu-desktop-2410-gen2"
+  ISO_SUFFIX: "24.10-desktop-amd64.iso"
 
 jobs:
   build_desktop_vhds:
     runs-on: [self-hosted, linux, azure, vmss]
-    strategy:
-      fail-fast: false
-      matrix:
-        include:
-          - version: "24.04.4"
-            series: "noble"
-            arch: "amd64"
-            offer: "ubuntu-desktop-2404-lts"
-            imgdef: "imgdef-ubuntu-desktop-2404-gen2"
-            iso_suffix: "24.04.4-desktop-amd64.iso"
-          - version: "24.10"
-            series: "oracular"
-            arch: "amd64"
-            offer: "ubuntu-desktop-2410"
-            imgdef: "imgdef-ubuntu-desktop-2410-gen2"
-            iso_suffix: "24.10-desktop-amd64.iso"
 
     steps:
       - name: Checkout Code
