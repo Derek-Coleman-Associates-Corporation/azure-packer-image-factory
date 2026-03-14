@@ -55,8 +55,8 @@ def run_windows11_automation():
     headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
     
     windows11_products = {
-        "windows-11-desktop": {
-            "name": "Windows 11 Desktop (Hardened)",
+        "e19e298c-d651-4176-a930-1deedcdb4c3e": {
+            "name": "Desktop for Windows 11",
             "logo_path": ".agents/workflows/windows-logo.png",
             "plans": [
                 {
@@ -106,8 +106,26 @@ def run_windows11_automation():
         resources.append({
             "$schema": "https://schema.mp.microsoft.com/schema/product/2022-03-01-preview3",
             "id": f"product/{product_id}",
-            "name": product_data['name'],
-            "kind": "azureVM"
+            "identity": { "externalId": product_id },
+            "type": "azureVirtualMachine",
+            "alias": product_data['name']
+        })
+        
+        resources.append({
+            "$schema": "https://schema.mp.microsoft.com/schema/listing/2022-03-01-preview3",
+            "id": f"listing/{product_id}/public/main/default/en-us",
+            "product": f"product/{product_id}",
+            "kind": "azureVM",
+            "languageId": "en-us",
+            "title": product_data['name'],
+            "description": f"<p>Deploy {product_data['name']} natively integrated with enterprise security and Azure Virtual Desktop workflows.</p>",
+            "searchResultSummary": f"High-performance {product_data['name']} offering.",
+            "shortDescription": f"Enterprise optimized {product_data['name']} environments.",
+            "privacyPolicyLink": "https://www.dcassociatesgroup.com/privacy",
+            "globalSupportWebsite": "https://www.dcassociatesgroup.com",
+            "supportContact": { "name": "Support Team", "email": "support@dcassociatesgroup.com", "phone": "18564484318" },
+            "engineeringContact": { "name": "Engineering Team", "email": "support@dcassociatesgroup.com", "phone": "18564484318" },
+            "cloudSolutionProviderContact": { "name": "CSP Team", "email": "support@dcassociatesgroup.com", "phone": "18564484318" }
         })
         
         resources.append({
@@ -134,7 +152,9 @@ def run_windows11_automation():
                 "$schema": "https://schema.mp.microsoft.com/schema/plan/2022-03-01-preview2",
                 "id": f"plan/{product_id}/{p_id}",
                 "product": f"product/{product_id}",
-                "name": p_title
+                "identity": {"externalId": p_id},
+                "alias": p_title,
+                "azureRegions": ["azureGlobal"]
             })
             
             resources.append({
@@ -167,41 +187,63 @@ def run_windows11_automation():
             })
             
             resources.append({
-                "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview2",
+                "$schema": "https://schema.mp.microsoft.com/schema/virtual-machine-plan-technical-configuration/2022-03-01-preview6",
                 "id": f"virtual-machine-plan-technical-configuration/{product_id}/{p_id}",
                 "product": f"product/{product_id}",
                 "plan": f"plan/{product_id}/{p_id}",
-                "operatingSystemFamily": "Windows",
-                "operatingSystem": "windows",
-                "generation": "gen2",
-                "state": "generalized",
-                "securityType": "TrustedLaunch",
-                "supportsAcceleratedNetworking": True,
-                "supportsCloudInitConfiguration": False,
-                "supportsVmExtensions": True,
-                "supportsBackup": True,
-                "supportsMicrosoftEntraIdentityAuthentication": True,
-                "isNetworkVirtualAppliance": False,
-                "recommendedSizes": [
-                    "Standard_D2s_v5",
-                    "Standard_D4s_v5",
-                    "Standard_D8s_v5",
-                    "Standard_E2s_v5",
-                    "Standard_E4s_v5",
-                    "Standard_E8s_v5"
+                "skus": [
+                    {
+                        "imageType": "x64Gen2",
+                        "skuId": p_id,
+                        "securityType": ["trusted"]
+                    }
                 ],
+                "operatingSystem": {
+                    "family": "windows",
+                    "type": "other"
+                },
                 "osType": "windows",
                 "azureRegions": [
                     "azureGlobal"
                 ],
-                "cloudInstanceCapabilities": [],
-                "azureComputeGalleryImageIdentities": [
+                "cloudInstanceCapabilities": [{
+                    "supportsAcceleratedNetworking": True,
+                    "supportsCloudInit": False,
+                    "supportsExtensions": True,
+                    "supportsBackup": True,
+                    "supportsAadLogin": True,
+                    "networkVirtualAppliance": False
+                }],
+                "recommendedVmSizes": [
+                    "d2s-standard-v5",
+                    "d4s-standard-v5",
+                    "d8s-standard-v5",
+                    "e2s-standard-v5",
+                    "e4s-standard-v5"
+                ],
+                "vmProperties": {
+                    "supportsAcceleratedNetworking": True,
+                    "supportsCloudInit": False,
+                    "supportsExtensions": True,
+                    "supportsBackup": True,
+                    "supportsAadLogin": True,
+                    "networkVirtualAppliance": False
+                },
+                "vmImageVersions": [
                     {
-                        "subscriptionId": "f4085274-4e9d-4e93-8360-67a4be900d81",  
-                        "resourceGroup": "RG-PACKER-IMAGE-FACTORY-EASTUS",
-                        "galleryName": "acgpackerfactoryeastus",
-                        "imageDefinitionName": img_def,
-                        "imageVersion": get_latest_gallery_version(img_def)
+                        "versionNumber": get_latest_gallery_version(img_def),
+                        "vmImages": [
+                            {
+                                "imageType": "x64Gen2",
+                                "source": {
+                                    "sourceType": "sharedImageGallery",
+                                    "sharedImage": {
+                                        "tenantId": tenant_id,
+                                        "resourceId": f"/subscriptions/f4085274-4e9d-4e93-8360-67a4be900d81/resourceGroups/RG-PACKER-IMAGE-FACTORY-EASTUS/providers/Microsoft.Compute/galleries/acgpackerfactoryeastus/images/{img_def}/versions/{get_latest_gallery_version(img_def)}"
+                                    }
+                                }
+                            }
+                        ]
                     }
                 ]
             })

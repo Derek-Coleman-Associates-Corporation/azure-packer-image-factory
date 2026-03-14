@@ -63,3 +63,21 @@ When creating the offer in Microsoft Partner Center:
 3. In the **Technical Configuration** tab for *each plan*, link it directly to the corresponding Image Definition deployed in the Azure Compute Gallery.
 
 This design pattern ensures that when a customer searches for your brand, they see concise, top-level offers, and can use the plan dropdowns to select their desired variants without cluttering the marketplace search results with redundant entries.
+
+## Partner Center API Pricing Strategy (Hard Rule)
+
+In order to comply with offer creation best practices across the OpenClaw/DCA enterprise matrix, **all scripted virtual machine plans injected via the Partner Center API must rigidly enforce a $0.09 USD per vCPU (perCore) pricing model.**
+
+When synthesizing the `price-and-availability-plan` JSON payload to `https://graph.microsoft.com/rp/product-ingestion/configure`, ensure the following schema block is present for every plan:
+
+```json
+"pricing": {
+    "licenseModel": "payAsYouGo",
+    "corePricing": {
+        "priceInputOption": "perCore",
+        "pricePerCore": 0.09
+    }
+}
+```
+
+This acts as a memory rule for any automation scripts mapping Azure Compute Gallery Image Definitions (`imgdef`) into the marketplace. Free or flat-rate options are strictly invalid for these OS images unless explicitly granted an exception.
