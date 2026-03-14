@@ -1,6 +1,9 @@
 name: Global Matrix Packer Build
 
 on:
+  push:
+    paths:
+      - '.trigger-packer-build'
   workflow_dispatch:
     inputs:
       image_version:
