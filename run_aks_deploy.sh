@@ -31,7 +31,7 @@ az aks nodepool add \
   --enable-cluster-autoscaler \
   --min-count 0 \
   --max-count 50 \
-  --node-vm-size Standard_D8s_v5
+  --node-vm-size Standard_D8s_v4
 
 echo "Getting AKS Credentials..."
 az aks get-credentials --resource-group $RESOURCE_GROUP --name $CLUSTER_NAME --overwrite-existing
@@ -42,10 +42,7 @@ helm repo update
 helm install cert-manager jetstack/cert-manager --namespace cert-manager --create-namespace --version v1.14.4 --set installCRDs=true
 
 echo "Installing Actions Runner Controller (ARC)..."
-helm repo add actions-runner-controller https://actions-runner-controller.github.io/actions-runner-controller
-helm upgrade --install --namespace actions-runner-system --create-namespace \
-  --wait actions-runner-controller actions-runner-controller/actions-runner-controller \
-  --set syncPeriod=1m
+helm install arc --namespace arc-systems --create-namespace oci://ghcr.io/actions/actions-runner-controller-charts/gha-runner-scale-set-controller
 
 echo "Installing ARC AutoScaling RunnerSet..."
 helm install arc-packer-runners \
